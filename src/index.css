@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  
+  .font-article-body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .font-article-ui {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  ::selection {
+    background-color: #FF0000;
+    color: white;
+  }
+  
+  ::-moz-selection {
+    background-color: #FF0000;
+    color: white;
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-hidden: none;
+    scrollbar-width: none;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  /* Leaflet styles */
+  .leaflet-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .leaflet-popup-content {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .leaflet-popup-content h3 {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .leaflet-popup-content p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+}
