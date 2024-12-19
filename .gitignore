@@ -1,5 +1,5 @@
 # Next build files and export
-.next/
+.next
 out/
 
 # Environment variables
