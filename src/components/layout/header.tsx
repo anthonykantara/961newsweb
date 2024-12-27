@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
 import { Sun, Moon, Menu } from 'lucide-react'
 import { Logo } from './logo'
-import { AuthButton } from '@/components/auth/auth-button'
+import { AuthButton } from '@/components/Auth/auth-button'
 
 export function Header() {
   const { theme, setTheme } = useTheme()
