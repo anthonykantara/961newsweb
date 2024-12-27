@@ -1,5 +1,5 @@
 import { Header } from '@/components/layout/header'
-import { ArticleGrid } from '@/components/articles/article-grid'
+import { ArticleGrid } from '@/components/HomePage/ArticleGrid'
 import { Article } from '@/types/article'
 
 // Mock data - in a real app this would come from an API
@@ -39,7 +39,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header />
       <main className="container py-6">
-        <ArticleGrid articles={articles} featured />
+        <ArticleGrid articles={articles} layout='standard' />
       </main>
     </div>
   )

@@ -1,34 +1,21 @@
-import React from 'react';
 import { Clock } from 'lucide-react';
 import { formatTimeAgo } from '../../utils/dateUtils';
-
-interface Article {
-  id: string;
-  title: string;
-  excerpt?: string;
-  imageUrl?: string;
-  category: string;
-  timestamp: Date;
-  outlet: {
-    name: string;
-    logo: string;
-  };
-}
+import { Article } from '@/types/article'
 
 interface ArticleGridProps {
   articles: Article[];
   layout?: 'compact' | 'standard';
 }
 
-export default function ArticleGrid({ articles, layout = 'standard' }: ArticleGridProps) {
+export function ArticleGrid({ articles, layout = 'standard' }: ArticleGridProps) {
   if (layout === 'compact') {
     return (
       <div className="grid gap-4">
         {articles.map(article => (
           <article key={article.id} className="flex items-start gap-4 p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-            {article.imageUrl && (
+            {article.featuredImage && (
               <img
-                src={article.imageUrl}
+                src={article.featuredImage}
                 alt={article.title}
                 className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
               />
@@ -65,10 +52,10 @@ export default function ArticleGrid({ articles, layout = 'standard' }: ArticleGr
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {articles.map(article => (
         <article key={article.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
-          {article.imageUrl && (
+          {article.featuredImage && (
             <div className="aspect-video overflow-hidden">
               <img
-                src={article.imageUrl}
+                src={article.featuredImage}
                 alt={article.title}
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
               />

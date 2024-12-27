@@ -5,6 +5,7 @@ export interface Article {
   content: ArticleContent[]
   timestamp: Date
   featuredImage?: string
+  excerpt?: string;
   outlet: {
     name: string
     logo: string
