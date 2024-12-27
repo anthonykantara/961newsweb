@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Article, ArticleContent } from '@/types/article'
+import { Article } from '@/types/article'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'

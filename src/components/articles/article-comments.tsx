@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -5,7 +7,7 @@ import { Card } from '@/components/ui/card'
 import { MessageCircle, Heart } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/lib/store'
-import { AuthDialog } from '@/components/auth/auth-dialog'
+import { AuthDialog } from '@/components/Auth/auth-dialog'
 
 interface Comment {
   id: string
