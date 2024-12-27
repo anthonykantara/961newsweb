@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { MessageCircle, Share2, Bookmark } from 'lucide-react'
-import { formatTimeAgo } from '@/lib/utils'
+import { formatTimeAgo } from '@/utils/dateUtils'
 import { Article } from '@/types/article'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 interface ArticleCardProps {
   article: Article
