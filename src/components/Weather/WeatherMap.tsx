@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface WeatherMapProps {
   location: {
     city: string;

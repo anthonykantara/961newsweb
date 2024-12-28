@@ -1,4 +1,3 @@
-import React from 'react';
 import ArticleList from '../SectionLayout/ArticleList';
 import TopicSidebar from './TopicSidebar';
 import AdPlacement from '../Ads/AdPlacement';

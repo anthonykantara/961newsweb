@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
 import { MessageCircle, Flame, MessageSquare } from 'lucide-react';
 import { formatTimeAgo } from '../../utils/dateUtils'; 
 
@@ -57,7 +57,6 @@ const topComments: Comment[] = [
 ];
 
 export default function LeftSidebar({ articles, outlet, author }: LeftSidebarProps) {
-  const navigate = useNavigate();
   const scrollToComments = () => {
     const commentsSection = document.getElementById('comments-section');
     commentsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -111,7 +110,7 @@ export default function LeftSidebar({ articles, outlet, author }: LeftSidebarPro
           {articles.slice(0, 5).map((article) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
             >
               <div className="flex-1 min-w-0">
@@ -190,7 +189,7 @@ export default function LeftSidebar({ articles, outlet, author }: LeftSidebarPro
       
       <div className="bg-white p-6 border-t border-gray-200">
         <Link
-          to="https://deals.961.co"
+          href="https://deals.961.co"
           className="block"
         >
           <div className="flex items-center gap-3 mb-4">

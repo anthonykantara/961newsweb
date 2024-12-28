@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cloud, Wind, Droplets, Sun } from 'lucide-react';
 
 interface CurrentWeatherProps {

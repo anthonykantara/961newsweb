@@ -5,6 +5,7 @@ export interface LiveUpdate {
   priority?: 'high' | 'critical';
   content?: string;
   type?: string;
+  isGraphic?: boolean;
   description?: string;
   media?: {
     type: 'image' | 'video';

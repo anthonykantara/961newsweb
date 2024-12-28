@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+"use client"
+
+import Link from 'next/link';
 import { NewspaperIcon, ShoppingBagIcon, HomeIcon, User } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
@@ -59,7 +60,7 @@ export default function UpperMenu() {
             {menuItems.map((item) => (
               <Link
                 key={item.name}
-                to={item.to}
+                href={item.to}
                 className={`flex items-center space-x-2 hover:text-gray-300 transition-colors ${item.fontSize} ${
                   item.active ? 'text-[#FF0000]' : ''
                 }`}

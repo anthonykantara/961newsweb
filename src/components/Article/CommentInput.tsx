@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CoinIcon from '../Icons/CoinIcon';
 
 interface CommentInputProps {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface CollectionHeaderProps {
   title: string;
   description?: string;

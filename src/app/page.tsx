@@ -12,6 +12,8 @@ import WorldNewsSection from '../components/HomePage/WorldNewsSection';
 import MostSharedSection from '../components/HomePage/MostSharedSection';
 import PopularJournalists from '../components/HomePage/PopularJournalists';
 import PopularOutlets from '../components/HomePage/PopularOutlets';
+import Header from '@/components/Header';
+import Navigation from '@/components/Navigation';
 
 const heroSlides = [
   {
@@ -253,6 +255,8 @@ export default function HomePage() {
 
   return (
     <>
+      <Header />
+      <Navigation />
       <LiveFeedPreview />
       <div className="container mx-auto px-4">
         <div className="max-w-[800px] mx-auto">

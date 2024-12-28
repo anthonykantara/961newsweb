@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface Update {
   id: string;
@@ -33,7 +33,7 @@ export default function MoreUpdates() {
         {popularUpdates.map((update) => (
           <Link
             key={update.id}
-            to={`/updates/${update.id}`}
+            href={`/updates/${update.id}`}
             className="flex items-start gap-4 group"
           >
             <span className="flex-shrink-0 w-2 h-2 rounded-full bg-[#FF0000] mt-3" />

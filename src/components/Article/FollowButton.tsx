@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFollow } from '../../contexts/FollowContext';
 import AuthDialog from '../Auth/AuthDialog';
 import { useState } from 'react';

@@ -1,6 +1,5 @@
-import React from 'react';
 import { Users, Newspaper, Video, Eye, BarChart2, TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface OutletStatsProps {
   outlet: {
@@ -167,7 +166,7 @@ export default function OutletStats({ outlet }: OutletStatsProps) {
         <div className="grid grid-cols-3 gap-6">
           {outlet.journalists.map((journalist) => (
             <div key={journalist.id} className="flex items-center gap-4">
-              <Link to={`/journalist/${journalist.id}`} className="flex items-center gap-3 flex-1">
+              <Link href={`/journalist/${journalist.id}`} className="flex items-center gap-3 flex-1">
                 <img
                   src={journalist.imageUrl}
                   alt={journalist.name}

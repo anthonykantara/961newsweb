@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+"use client"
+
+import { useState } from 'react';
 import { Search } from 'lucide-react';
 import CoinIcon from '../Icons/CoinIcon';
 import { motion } from 'framer-motion';

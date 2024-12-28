@@ -1,7 +1,6 @@
-import React from 'react';
 import { Clock, MessageCircle, Bookmark, Share2, UserPlus } from 'lucide-react';
 import { formatTimeAgo } from '../../utils/dateUtils';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface ArticleHeaderProps {
   title: string;
@@ -38,7 +37,7 @@ export default function ArticleHeader({
       
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link to={`/outlet/${outlet.id}`} className="flex items-center gap-4 group">
+          <Link href={`/outlet/${outlet.id}`} className="flex items-center gap-4 group">
             <img
               src={outlet.logo}
               alt={outlet.name}

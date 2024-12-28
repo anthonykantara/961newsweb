@@ -1,6 +1,8 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+"use client"
+
+import Link from 'next/link';
 import { Search } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 interface Category {
   name: string;
@@ -23,18 +25,18 @@ const categories: Category[] = [
 ];
 
 export default function Navigation() {
-  const location = useLocation();
-  const isLiveActive = location.pathname === '/live';
-  const isHome = location.pathname === '/';
+  const pathname = usePathname();
+  const isLiveActive = pathname === '/live';
+  const isHome = pathname === '/';
 
   return (
     <nav className="bg-white border-b border-gray-200">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-4">
         <div className="flex items-center justify-between py-3">
-          <div className="flex items-center space-x-6 overflow-x-auto no-scrollbar">
+          <div className="flex items-center space-x-4 overflow-x-auto no-scrollbar">
             {!isHome && (
               <Link 
-                to="/live"
+                href="/live"
                 className={`flex items-center space-x-2 transition-colors ${
                   isLiveActive ? 'text-[#FF0000]' : 'text-gray-600 hover:text-[#FF0000]'
                 }`}
@@ -51,10 +53,10 @@ export default function Navigation() {
             )}
           {categories.map((category) => (
             <Link
-              to={category.path || '#'}
+              href={category.path || '#'}
               key={category.name}
-              className={`whitespace-nowrap text-[18px] font-medium transition-colors ${
-                (!isLiveActive && ((isHome && category.path === '/') || category.path === location.pathname))
+              className={`whitespace-nowrap text-[16px] font-medium transition-colors ${
+                (!isLiveActive && ((isHome && category.path === '/') || category.path === pathname))
                   ? 'text-[#FF0000]' 
                   : 'text-gray-600 hover:text-[#FF0000]'
               }`}

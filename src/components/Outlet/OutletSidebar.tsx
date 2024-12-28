@@ -1,6 +1,5 @@
-import React from 'react';
 import { TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
 interface OutletSidebarProps {
@@ -75,7 +74,7 @@ export default function OutletSidebar({ outlet }: OutletSidebarProps) {
           {weeklyPopular.map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="block group"
             >
               <div className="flex items-start gap-3">
@@ -114,7 +113,7 @@ export default function OutletSidebar({ outlet }: OutletSidebarProps) {
           {popularArticles.map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="block group"
             >
               <div className="flex items-start gap-3">

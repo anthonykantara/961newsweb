@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Article {
@@ -101,7 +101,7 @@ export default function OutletArticles() {
           >
             {articles.map((article, index) => (
               <Link
-                to={`/article/${article.id}`}
+                href={`/article/${article.id}`}
                 key={article.id}
                 className="flex-none w-[400px] hover:bg-gray-50 transition-colors p-3 border border-gray-200 rounded-lg group"
               >

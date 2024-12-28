@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import { Newspaper, Video, Play } from 'lucide-react';
 import ArticleCard from '../SectionLayout/ArticleCard';

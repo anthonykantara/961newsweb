@@ -1,5 +1,5 @@
+import { useRouter } from 'next/navigation';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface ArticleCollectionBadgeProps {
   count: number;
@@ -7,12 +7,12 @@ interface ArticleCollectionBadgeProps {
 }
 
 export default function ArticleCollectionBadge({ count, articleId }: ArticleCollectionBadgeProps) {
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    navigate(`/collection/${articleId}`);
+    navigate.push(`/collection/${articleId}`);
   };
 
   return (

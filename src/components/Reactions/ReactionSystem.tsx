@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+"use client"
+
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import TopEmojis from './TopEmojis';
 import EmojiPicker from './EmojiPicker';

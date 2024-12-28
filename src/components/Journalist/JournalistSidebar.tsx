@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 import { UserPlus } from 'lucide-react';
 
@@ -80,7 +80,7 @@ export default function JournalistSidebar({ journalist }: JournalistSidebarProps
           {weeklyPopular.map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="block group"
             >
               <div className="flex items-start gap-3">
@@ -119,7 +119,7 @@ export default function JournalistSidebar({ journalist }: JournalistSidebarProps
           {popularArticles.map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="block group"
             >
               <div className="flex items-start gap-3">

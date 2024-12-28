@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface OutletNavigationProps {
   activeSection: string;
   onSectionChange: (section: string) => void;

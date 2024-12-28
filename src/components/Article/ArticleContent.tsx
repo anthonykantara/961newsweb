@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ContentBlock {
   type: 'text' | 'image' | 'quote' | 'list';
   content?: string;

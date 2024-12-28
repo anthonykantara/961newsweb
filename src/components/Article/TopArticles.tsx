@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface Article {
   id: string;
@@ -38,7 +37,7 @@ export default function TopArticles() {
           {topArticles.map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="group flex items-start gap-3 cursor-pointer"
             >
               <span className="text-[#FF0000] text-lg">•</span>

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+"use client"
+
+import { useState } from 'react';
 import { LayoutGrid, ChevronDown, User } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
 import AppDropdown from './AppDropdown';
 import { LanguageDropdown } from './LanguageDropdown';
 import Logo from './Logo';
 
 export default function Header() {
-  const navigate = useNavigate();
   const [appDropdownOpen, setAppDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState({ code: 'en', name: 'English' });
@@ -30,11 +31,11 @@ export default function Header() {
             </div>
             <Logo />
             <div className="h-3 w-px bg-gray-700/50 mx-1" />
-            <Link to="/map" className="text-[15px] text-gray-300 hover:text-white transition-colors">News Map</Link>
+            <Link href="/map" className="text-[15px] text-gray-300 hover:text-white transition-colors">News Map</Link>
             <div className="h-3 w-px bg-gray-700/50 mx-1" />
-            <Link to="/weather" className="text-[15px] text-gray-300 hover:text-white transition-colors">Weather</Link>
+            <Link href="/weather" className="text-[15px] text-gray-300 hover:text-white transition-colors">Weather</Link>
             <div className="h-3 w-px bg-gray-700/50 mx-1" />
-            <Link to="/sports" className="text-[15px] text-gray-300 hover:text-white transition-colors">Sports</Link>
+            <Link href="/sports" className="text-[15px] text-gray-300 hover:text-white transition-colors">Sports</Link>
           </div>
           
           <div className="flex items-center space-x-3">

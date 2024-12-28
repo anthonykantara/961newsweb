@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Heart, MoreVertical } from 'lucide-react';
 import { formatTimeAgo } from '../../utils/dateUtils';
 import CommentInput from './CommentInput';

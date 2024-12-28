@@ -1,6 +1,5 @@
-import React from 'react';
 import { Clock, TrendingUp, MessageCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 import FollowButton from './FollowButton';
 import NewsletterCTA from './NewsletterCTA';
@@ -45,7 +44,7 @@ export default function ArticleSidebar({
             <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
               AD
             </div>
-            <Link to={`/outlet/${outlet.id}`} className="text-[18px] font-bold text-gray-900 hover:text-[#FF0000] transition-colors">
+            <Link href={`/outlet/${outlet.id}`} className="text-[18px] font-bold text-gray-900 hover:text-[#FF0000] transition-colors">
               {outlet.name}
             </Link>
           </div>
@@ -59,7 +58,7 @@ export default function ArticleSidebar({
           {popularArticles.slice(0, 5).map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
             >
               <span className="text-lg font-bold text-gray-400 w-4">
@@ -91,7 +90,7 @@ export default function ArticleSidebar({
           {outletArticles.slice(0, 5).map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
             >
               <span className="text-lg font-bold text-gray-400 w-4">

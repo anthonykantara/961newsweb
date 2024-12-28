@@ -1,4 +1,3 @@
-import React from 'react';
 import { Sun, Cloud, CloudRain } from 'lucide-react';
 
 interface HourlyForecastProps {

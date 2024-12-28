@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { Home, Newspaper, ShoppingBag, ShoppingCart } from 'lucide-react';
 
 interface AppDropdownProps {
@@ -41,7 +41,7 @@ export default function AppDropdown({ isOpen, onClose }: AppDropdownProps) {
         {apps.map((app) => (
           <Link
             key={app.name}
-            to={app.to}
+            href={app.to}
             className={`flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors ${
               app.active ? 'bg-red-50' : ''
             }`}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
 interface Article {
@@ -178,7 +178,7 @@ export default function SectionSidebar({ section }: SectionSidebarProps) {
           {trendingArticles.slice(0, 10).map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`} 
+              href={`/article/${article.id}`} 
               className="block group py-2"
             >
               <h3 className="font-medium text-gray-900 group-hover:text-[#FF0000] transition-colors line-clamp-2 mb-2">
@@ -211,7 +211,7 @@ export default function SectionSidebar({ section }: SectionSidebarProps) {
             {content.topics.map((topic) => (
               <Link
                 key={topic}
-                to={`/search?q=${encodeURIComponent(topic)}`} 
+                href={`/topic/${encodeURIComponent(topic)}`} 
                 className="block group py-2"
               >
                 <h3 className="font-medium text-gray-900 group-hover:text-[#FF0000] transition-colors">

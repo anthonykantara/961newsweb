@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArticleList, CollectionHeader, CollectionSidebar } from './';
 import AdPlacement from '../Ads/AdPlacement';
 

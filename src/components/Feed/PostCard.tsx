@@ -1,5 +1,5 @@
-import React, { memo, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { memo, useCallback } from 'react';
+import Link from 'next/link';
 import { Clock, Users, Play } from 'lucide-react';
 import { formatTimeAgo, formatNumber } from '../../utils/dateUtils';
 import { Post } from '../../types/post';
@@ -22,7 +22,7 @@ function PostCard({ post }: PostCardProps) {
 
   return (
     <Link
-      to={getPostUrl()} 
+      href={getPostUrl()} 
       className={`block bg-white rounded-lg shadow-sm overflow-hidden group mb-16 ${
         isVerticalVideo ? 'max-w-sm mx-auto' : ''
       }`}

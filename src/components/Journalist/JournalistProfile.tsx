@@ -1,6 +1,8 @@
-import React from 'react';
+"use client"
+
 import { UserPlus, Users, Newspaper, Video, Eye, Share2 } from 'lucide-react';
 import ShareDialog from '../LiveFeed/ShareDialog';
+import { useState } from 'react';
 
 interface JournalistProfileProps {
   journalist: {
@@ -21,7 +23,7 @@ interface JournalistProfileProps {
 }
 
 export default function JournalistProfile({ journalist }: JournalistProfileProps) {
-  const [showShareDialog, setShowShareDialog] = React.useState(false);
+  const [showShareDialog, setShowShareDialog] = useState(false);
 
   return (
     <>

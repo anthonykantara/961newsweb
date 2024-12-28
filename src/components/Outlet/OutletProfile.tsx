@@ -1,6 +1,8 @@
-import React from 'react';
+"use client"
+
 import { Users, Newspaper, Video, Eye } from 'lucide-react';
 import ShareDialog from '../LiveFeed/ShareDialog';
+import { useState } from 'react';
 
 interface OutletProfileProps {
   outlet: {
@@ -22,7 +24,7 @@ interface OutletProfileProps {
 }
 
 export default function OutletProfile({ outlet }: OutletProfileProps) {
-  const [showShareDialog, setShowShareDialog] = React.useState(false);
+  const [showShareDialog, setShowShareDialog] = useState(false);
 
   return (
     <>

@@ -1,4 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+"use client"
+
+import { useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 interface Language {

@@ -1,6 +1,5 @@
-import React from 'react';
 import { Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
 interface Article {
@@ -92,7 +91,7 @@ export default function RelatedArticles() {
         {relatedArticles.map(article => (
           <Link
             key={article.id}
-            to={`/article/${article.id}`}
+            href={`/article/${article.id}`}
             className="group"
           >
             <div className="aspect-[1.5/1] overflow-hidden rounded-lg mb-3">

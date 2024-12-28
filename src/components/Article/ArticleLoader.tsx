@@ -1,4 +1,3 @@
-import React from 'react';
 import { MessageCircle, Bookmark, Share2 } from 'lucide-react';
 import { Article } from '../../types/article';
 import ReactionSystem from '../Reactions/ReactionSystem';
@@ -9,6 +8,7 @@ import OutletArticles from './OutletArticles';
 import Comments from '../Comments/Comments';
 import AdPlacement from '../Ads/AdPlacement';
 import RelatedArticles from './RelatedArticles';
+import { useState } from 'react';
 
 interface ArticleLoaderProps {
   article: Article;
@@ -16,8 +16,8 @@ interface ArticleLoaderProps {
 }
 
 export default function ArticleLoader({ article, isLast }: ArticleLoaderProps) {
-  const [isBookmarked, setIsBookmarked] = React.useState(false);
-  const [showShareDialog, setShowShareDialog] = React.useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [showShareDialog, setShowShareDialog] = useState(false);
 
   return (
     <article className="bg-white rounded-lg shadow-sm overflow-hidden">

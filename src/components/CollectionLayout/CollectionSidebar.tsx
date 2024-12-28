@@ -1,6 +1,5 @@
-import React from 'react';
 import { TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
 interface Article {
@@ -54,7 +53,7 @@ const CollectionSidebar = ({ collectionId }: CollectionSidebarProps) => {
           {trendingArticles.slice(0, 10).map((article) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`} 
+              href={`/article/${article.id}`} 
               className="block group py-2"
             >
               <h3 className="font-medium text-gray-900 group-hover:text-[#FF0000] transition-colors line-clamp-2 mb-2">
