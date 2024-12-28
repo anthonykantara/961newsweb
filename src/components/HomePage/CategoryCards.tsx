@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { TrendingUp, Briefcase, Globe2, Newspaper, Globe, BookOpen, ChevronRight } from 'lucide-react';
 
 const categories = [
@@ -59,7 +59,7 @@ export default function CategoryCards() {
       {categories.map(category => (
         <Link
           key={category.id}
-          to={category.link}
+          href={category.link}
           className="bg-white rounded-lg p-6 hover:shadow-md transition-all group relative"
         >
           <div className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mb-4`}>

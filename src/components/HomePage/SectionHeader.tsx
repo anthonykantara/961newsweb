@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface SectionHeaderProps {
   title: string;
@@ -13,7 +13,7 @@ export default function SectionHeader({ title, viewAllLink }: SectionHeaderProps
       <h2 className="text-xl font-bold text-gray-900">{title}</h2>
       {viewAllLink && (
         <Link
-          to={viewAllLink}
+          href={viewAllLink}
           className="flex items-center text-[#FF0000] hover:text-red-700 transition-colors text-sm font-medium"
         >
           View All

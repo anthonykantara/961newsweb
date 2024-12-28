@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UserPlus, Users, Eye, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const journalists = [
   {
@@ -79,7 +79,7 @@ export default function PopularJournalists() {
           </button>
         </div>
         <Link
-          to="/journalists"
+          href="/journalists"
           className="flex items-center gap-2 px-4 py-2 bg-[#FF0000]/5 text-[#FF0000] hover:bg-[#FF0000]/10 transition-colors rounded-lg ml-auto font-medium"
         >
           View All
@@ -90,7 +90,7 @@ export default function PopularJournalists() {
         {sortedJournalists.map((journalist) => (
           <div key={journalist.id} className="flex flex-col items-center text-center">
             <Link
-              to={`/journalist/${journalist.id}`}
+              href={`/journalist/${journalist.id}`}
               className="relative mb-3 group"
             >
               <img
@@ -103,7 +103,7 @@ export default function PopularJournalists() {
               </div>
             </Link>
             <Link
-              to={`/journalist/${journalist.id}`}
+              href={`/journalist/${journalist.id}`}
               className="font-medium text-gray-900 mb-1 hover:text-[#FF0000] transition-colors"
             >
               {journalist.name}

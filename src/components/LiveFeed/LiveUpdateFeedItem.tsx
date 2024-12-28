@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Zap, ChevronRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import ContentLabel from './ContentLabel';
 import ReactionSystem from '../Reactions/ReactionSystem';
 import ShareDialog from './ShareDialog';
 import { LiveUpdate } from '../../types/news';
 import { formatTimeAgo } from '../../utils/dateUtils';
+import { useRouter } from 'next/navigation';
 
 interface SharerProfile {
   id: string;
@@ -19,12 +19,12 @@ interface LiveUpdateFeedItemProps {
 
 export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateFeedItemProps) {
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const displayedSharers = sharers.slice(0, 3);
   const remainingSharers = Math.max(0, sharers.length - 3);
 
   const handleClick = () => {
-    navigate(`/updates/${update.id}`);
+    navigate.push(`/updates/${update.id}`);
   };
 
   return (

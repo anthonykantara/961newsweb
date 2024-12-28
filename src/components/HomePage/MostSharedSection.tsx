@@ -1,6 +1,6 @@
 import React from 'react';
 import { Share2, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
 const mostSharedArticles = [
@@ -68,7 +68,7 @@ export default function MostSharedSection() {
         {mostSharedArticles.map(article => (
           <Link
             key={article.id}
-            to={`/article/${article.id}`}
+            href={`/article/${article.id}`}
             className="group"
           >
             <div className="aspect-[1.5/1] overflow-hidden rounded-lg mb-3">

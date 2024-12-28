@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UserPlus, Users, Eye, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const outlets = [
   {
@@ -74,7 +74,7 @@ export default function PopularOutlets() {
           </button>
         </div>
         <Link
-          to="/outlets"
+          href="/outlets"
           className="flex items-center gap-2 px-4 py-2 bg-[#FF0000]/5 text-[#FF0000] hover:bg-[#FF0000]/10 transition-colors rounded-lg ml-auto font-medium"
         >
           View All
@@ -86,7 +86,7 @@ export default function PopularOutlets() {
           <div key={outlet.id} className="flex flex-col items-center text-center">
             <div className="relative mb-3">
               <Link 
-                to={`/outlet/${outlet.id}`}
+                href={`/outlet/${outlet.id}`}
                 className="block group"
               >
                 <img
@@ -100,7 +100,7 @@ export default function PopularOutlets() {
               </div>
             </div>
             <Link
-              to={`/outlet/${outlet.id}`}
+              href={`/outlet/${outlet.id}`}
               className="font-medium text-gray-900 mb-1 hover:text-[#FF0000] transition-colors"
             >
               {outlet.name}

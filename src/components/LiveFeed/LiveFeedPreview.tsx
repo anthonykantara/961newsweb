@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Radio } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import LiveUpdateCard from './LiveUpdateCard';
 import { LiveUpdate } from '../../types/news';
 
@@ -42,10 +42,10 @@ export default function LiveFeedPreview() {
         <div className="flex items-center justify-between py-3 border-b border-gray-200">
           <div className="flex items-center space-x-2">
             <Radio className="w-5 h-5 text-[#FF0000]" /> 
-            <Link to="/live" className="text-[18px] font-bold hover:text-[#FF0000] transition-colors">Live Updates</Link> 
+            <Link href="/live" className="text-[18px] font-bold hover:text-[#FF0000] transition-colors">Live Updates</Link> 
           </div>
           <Link 
-            to="/live"
+            href="/live"
             className="flex items-center text-[#FF0000] hover:text-red-700 transition-colors text-[15px] font-medium"
           >
             <span className="animate-pulse flex h-3 w-3 mr-2">

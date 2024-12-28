@@ -1,6 +1,6 @@
 import React from 'react';
 import { Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
 interface Article {
@@ -29,7 +29,7 @@ export default function NewsSection({ title, articles, layout = 'image' }: NewsS
         {articles.map(article => (
           <article key={article.id} className={`flex ${layout === 'image' ? 'gap-6' : 'gap-4'} items-start`}>
             {layout === 'image' && article.imageUrl && (
-              <Link to={`/article/${article.id}`}>
+              <Link href={`/article/${article.id}`}>
                 <img
                   src={article.imageUrl}
                   alt={article.title}
@@ -48,7 +48,7 @@ export default function NewsSection({ title, articles, layout = 'image' }: NewsS
                 </div>
               </div>
               <Link 
-                to={`/article/${article.id}`}
+                href={`/article/${article.id}`}
                 className="block font-medium text-xl text-gray-900 leading-snug hover:text-[#FF0000] transition-colors"
               >
                 {article.title}

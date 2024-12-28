@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Play, Clock } from 'lucide-react';
 import { formatTimeAgo } from '../../utils/dateUtils';
 
@@ -63,7 +63,7 @@ export default function VideoSection() {
         {videos.map(video => (
           <Link 
             key={video.id}
-            to={`/video/${video.id}`}
+            href={`/video/${video.id}`}
             className="flex-none w-[300px] group cursor-pointer"
           >
             <div className="relative aspect-[9/16] rounded-lg overflow-hidden mb-3">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Globe } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatTimeAgo } from '../../utils/dateUtils';
 import { ChevronRight } from 'lucide-react';
 
@@ -54,7 +54,7 @@ export default function WorldNewsSection() {
           <h2 className="text-[18px] font-bold">World News</h2>
         </div>
         <Link 
-          to="/world"
+          href="/world"
           className="text-[#FF0000] hover:text-red-700 transition-colors text-base font-medium"
         >
           View All
@@ -62,7 +62,7 @@ export default function WorldNewsSection() {
       </div>
       <div className="grid grid-cols-[340px,150px,340px] gap-6">
         <Link
-          to={`/article/${worldNews[0].id}`}
+          href={`/article/${worldNews[0].id}`}
           className="group"
         >
           <div className="aspect-[1.91/1] overflow-hidden rounded-lg relative mb-3">
@@ -87,7 +87,7 @@ export default function WorldNewsSection() {
           {worldNews.slice(1, 3).map((article, index) => (
             <Link
               key={article.id}
-              to={`/article/${article.id}`}
+              href={`/article/${article.id}`}
               className="group block mb-4 last:mb-0"
             >
               <div className="h-[78px] overflow-hidden rounded-lg relative mb-2">
@@ -113,7 +113,7 @@ export default function WorldNewsSection() {
         <div className="space-y-4">
           {headlines.map((headline, index) => (
             <div key={index}>
-              <Link to="/world" className="group block py-0.5 cursor-pointer">
+              <Link href="/world" className="group block py-0.5 cursor-pointer">
                 <h3 className="font-medium text-[15px] leading-snug line-clamp-2 text-gray-900 group-hover:text-[#FF0000] transition-colors">
                   {headline}
                 </h3>

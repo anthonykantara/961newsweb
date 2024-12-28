@@ -1,16 +1,14 @@
 import React from 'react';
 import { Zap } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { LiveUpdate } from '../../types/news';
 import { formatTimeAgo } from '../../utils/dateUtils';
-import { useNavigate } from 'react-router-dom';
 
 interface LiveUpdateCardProps {
   update: LiveUpdate;
 }
 
 export default function LiveUpdateCard({ update }: LiveUpdateCardProps) {
-  const navigate = useNavigate();
 
   const handleClick = () => {
     window.open(`/updates/${update.id}`, '_blank');
