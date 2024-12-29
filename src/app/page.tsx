@@ -14,6 +14,8 @@ import PopularJournalists from '../components/HomePage/PopularJournalists';
 import PopularOutlets from '../components/HomePage/PopularOutlets';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
+import RowNewsSection from '@/components/HomePage/RowNewsSection';
+import { politicsNewsStories, techNewsStories, worldHeadlines, worldNewsStories } from '@/components/HomePage/data';
 
 const heroSlides = [
   {
@@ -329,9 +331,8 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    currentSlide === index ? 'bg-white' : 'bg-white/50'
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors ${currentSlide === index ? 'bg-white' : 'bg-white/50'
+                    }`}
                 />
               ))}
             </div>
@@ -340,7 +341,7 @@ export default function HomePage() {
           <div className="space-y-6">
             <div className="space-y-2">
               <button
-                onClick={() => {}}
+                onClick={() => { }}
                 className="w-full bg-[#FF0000] text-white py-3.5 rounded-lg font-medium hover:bg-red-600 transition-colors"
               >
                 961 Log in
@@ -419,63 +420,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-5 gap-6 mt-6">
-          {[
-            {
-              id: '1',
-              title: 'Central Bank Announces New Economic Measures',
-              category: 'Economy',
-              imageUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=2070',
-              timestamp: new Date(Date.now() - 3600000),
-              outlet: {
-                name: 'The Daily Star',
-                logo: 'https://images.unsplash.com/photo-1679678691006-0ad24fecb769?w=32&h=32&q=80&fit=crop'
-              }
-            },
-            {
-              id: '2',
-              title: 'Tech Innovation Hub Opens in Beirut Digital District',
-              category: 'Technology',
-              imageUrl: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=2070',
-              timestamp: new Date(Date.now() - 7200000),
-              outlet: {
-                name: 'Executive',
-                logo: 'https://images.unsplash.com/photo-1679678691250-a14e09c004c7?w=32&h=32&q=80&fit=crop'
-              }
-            },
-            {
-              id: '3',
-              title: 'Environmental Protection Laws Take Effect',
-              category: 'Environment',
-              imageUrl: 'https://images.unsplash.com/photo-1573167243872-43c6433b9d40?auto=format&fit=crop&q=80&w=1740',
-              timestamp: new Date(Date.now() - 10800000),
-              outlet: {
-                name: "L'Orient Today",
-                logo: 'https://images.unsplash.com/photo-1679678691170-7781f11f9d86?w=32&h=32&q=80&fit=crop'
-              }
-            },
-            {
-              id: '4',
-              title: 'International Summit on Regional Cooperation',
-              category: 'Politics',
-              imageUrl: 'https://images.unsplash.com/photo-1530099486328-e021101a494a?auto=format&fit=crop&q=80&w=2547',
-              timestamp: new Date(Date.now() - 14400000),
-              outlet: {
-                name: 'The Daily Star',
-                logo: 'https://images.unsplash.com/photo-1679678691006-0ad24fecb769?w=32&h=32&q=80&fit=crop'
-              }
-            },
-            {
-              id: '5',
-              title: 'Healthcare Sector Receives Major Investment',
-              category: 'Healthcare',
-              imageUrl: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80&w=2070',
-              timestamp: new Date(Date.now() - 18000000),
-              outlet: {
-                name: 'Executive',
-                logo: 'https://images.unsplash.com/photo-1679678691250-a14e09c004c7?w=32&h=32&q=80&fit=crop'
-              }
-            }
-          ].map(article => (
+          {politicsNewsStories.map(article => (
             <Link
               key={article.id}
               href={`/article/${article.id}`}
@@ -515,13 +460,25 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6">
-          <WorldNewsSection />
+          <RowNewsSection title={'World News'} articles={worldNewsStories} headlines={worldHeadlines} viewAllLink={'/world'} />
+        </div>
+
+        <div className="mt-6">
+          <RowNewsSection title={'Technology News'} articles={techNewsStories} headlines={worldHeadlines} viewAllLink={'/technology'} />
+        </div>
+
+        <div className="mt-6">
+          <RowNewsSection title={'Politics News'} articles={politicsNewsStories} headlines={worldHeadlines} viewAllLink={'/politics'} />
+        </div>
+
+        <div className="mt-6 max-w-[800px] mx-auto">
+          <AdPlacement />
         </div>
 
         <div className="mt-6">
           <div className="bg-white p-6">
             <div className="relative">
-              <div 
+              <div
                 ref={scrollRef}
                 className="flex gap-4 overflow-x-hidden scroll-smooth relative"
               >
@@ -574,7 +531,7 @@ export default function HomePage() {
                 ))}
               </div>
               {canScrollLeft && (
-                <button 
+                <button
                   onClick={() => scroll('left')}
                   className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
                 >
@@ -582,7 +539,7 @@ export default function HomePage() {
                 </button>
               )}
               {canScrollRight && (
-                <button 
+                <button
                   onClick={() => scroll('right')}
                   className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
                 >
