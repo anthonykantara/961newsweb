@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Heart, MoreVertical } from 'lucide-react';
 import { formatTimeAgo } from '../../utils/dateUtils';
-import CommentInput from './CommentInput';
+import CommentInput from '../Comments/CommentInput';
 import { Comment } from '../../types/comment';
 
 interface CommentListProps {

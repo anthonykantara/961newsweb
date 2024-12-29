@@ -58,7 +58,7 @@ export default function CommentInput({ onSubmit, isFirstComment = true, remainin
               : 'bg-[#FF0000] text-white hover:bg-red-600'
           } transition-colors`}
         >
-          Comment
+          {isFirstComment ? 'Comment' : 'Reply'}
         </button>
       </div>
     </form>
