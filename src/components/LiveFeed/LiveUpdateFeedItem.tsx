@@ -5,7 +5,7 @@ import ReactionSystem from '../Reactions/ReactionSystem';
 import ShareDialog from './ShareDialog';
 import { LiveUpdate } from '../../types/news';
 import { formatTimeAgo } from '../../utils/dateUtils';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface SharerProfile {
   id: string;
@@ -19,18 +19,22 @@ interface LiveUpdateFeedItemProps {
 
 export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateFeedItemProps) {
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
-  const navigate = useRouter();
+  const router = useRouter();
+  const pathname = usePathname() || '';
   const displayedSharers = sharers.slice(0, 3);
   const remainingSharers = Math.max(0, sharers.length - 3);
+  const isUpdatesPage = pathname.includes(`/updates/`)
 
   const handleClick = () => {
-    navigate.push(`/updates/${update.id}`);
+    if (!isUpdatesPage) {
+      router.push(`/updates/${update.id}`);
+    }
   };
 
   return (
-    <div 
+    <div
       onClick={handleClick}
-      className="bg-white rounded-lg shadow-sm overflow-hidden max-w-[800px] mx-auto hover:shadow-md transition-shadow cursor-pointer group"
+      className={`bg-white rounded-lg shadow-sm overflow-hidden max-w-[800px] mx-auto hover:shadow-md transition-shadow ${isUpdatesPage ? '' : 'cursor-pointer'} group`}
     >
       <div className="p-6">
         <div className="flex items-center justify-between mb-3 relative">
@@ -53,14 +57,15 @@ export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateF
               {formatTimeAgo(update.timestamp)}
             </span>
           </div>
-          <div className="group">
+          <div className="group flex items-center justify-between">
             <ReactionSystem />
+            <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#FF0000] transition-colors" />
           </div>
-          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#FF0000] transition-colors" />
         </div>
         <button
           onClick={handleClick}
-          className="block text-3xl font-bold text-gray-900 mb-4 leading-tight hover:text-[#FF0000] transition-colors"
+          className={`block text-3xl font-bold text-gray-900 mb-4 leading-tight hover:text-[#FF0000] transition-colors ${isUpdatesPage ? 'pointer-events-none' : ''
+            }`}
         >
           {update.title}
         </button>
@@ -68,25 +73,22 @@ export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateF
           {update.content}
         </p>
         {update.media && (
-          <div className={`rounded-lg overflow-hidden ${
-            update.media.aspectRatio === 'vertical' ? 'max-w-md mx-auto h-screen' : 'max-w-3xl mx-auto'
-          } mb-4`}>
+          <div className={`rounded-lg overflow-hidden ${update.media.aspectRatio === 'vertical' ? 'max-w-md mx-auto h-screen' : 'max-w-3xl mx-auto'
+            } mb-4`}>
             {update.media.type === 'image' ? (
               <img
                 src={update.media.url}
                 alt=""
-                className={`w-full object-cover ${
-                  update.media.aspectRatio === 'vertical' 
-                    ? 'h-full' 
+                className={`w-full object-cover ${update.media.aspectRatio === 'vertical'
+                    ? 'h-full'
                     : 'max-h-[40vh]'
-                }`}
+                  }`}
               />
             ) : (
-              <div className={`relative ${
-                update.media.aspectRatio === 'vertical'
+              <div className={`relative ${update.media.aspectRatio === 'vertical'
                   ? 'h-screen'
                   : 'aspect-video max-h-[40vh]'
-              }`}>
+                }`}>
                 <iframe
                   src={update.media.url}
                   className="absolute top-0 left-0 w-full h-full"
