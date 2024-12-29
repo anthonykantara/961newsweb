@@ -511,6 +511,14 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6">
+          <CategoryCards />
+        </div>
+
+        <div className="mt-6">
+          <WorldNewsSection />
+        </div>
+
+        <div className="mt-6">
           <div className="bg-white p-6">
             <div className="relative">
               <div 
@@ -583,14 +591,6 @@ export default function HomePage() {
               )}
             </div>
           </div>
-        </div>
-
-        <div className="mt-6">
-          <CategoryCards />
-        </div>
-
-        <div className="mt-6">
-          <WorldNewsSection />
         </div>
 
         <div className="mt-6">
