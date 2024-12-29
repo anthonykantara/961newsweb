@@ -101,6 +101,16 @@ export default function LeftSidebar({ articles, outlet, author }: LeftSidebarPro
           </div>
         </div>
       </div>
+      
+      <div className="bg-white p-6 border-b border-gray-200">
+        <div className="h-[250px] w-full rounded flex items-center justify-center relative">
+          <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
+            AD
+          </div>
+          <span className="text-gray-400">Ad Space</span>
+        </div>
+      </div>
+
       <div className="bg-white p-6 border-b border-gray-200">
         <div className="flex items-center gap-2 mb-6">
           <Flame className="w-5 h-5 text-[#FF0000]" />
@@ -127,15 +137,6 @@ export default function LeftSidebar({ articles, outlet, author }: LeftSidebarPro
               </div>
             </Link>
           ))}
-        </div>
-      </div>
-      
-      <div className="bg-white p-6 border-b border-gray-200">
-        <div className="h-[250px] w-full rounded flex items-center justify-center relative">
-          <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
-            AD
-          </div>
-          <span className="text-gray-400">Ad Space</span>
         </div>
       </div>
 
