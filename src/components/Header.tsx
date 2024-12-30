@@ -22,7 +22,7 @@ export default function Header() {
                 onClick={() => setAppDropdownOpen(!appDropdownOpen)}
                 className="hover:text-gray-300 transition-colors"
               >
-                <LayoutGrid className="w-6 h-6" />
+                <LayoutGrid className="w-3 h-3" />
               </button>
               <AppDropdown
                 isOpen={appDropdownOpen}
