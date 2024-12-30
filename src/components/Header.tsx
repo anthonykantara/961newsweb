@@ -37,28 +37,27 @@ export default function Header() {
             <div className="h-3 w-px bg-gray-700/50 mx-1" />
             <Link href="/sports" className="text-[15px] text-gray-300 hover:text-white transition-colors">Sports</Link>
           </div>
-          
+
           <div className="flex items-center space-x-3">
-            <div className="relative">
+            <div className="relative flex items-center space-x-[1px]">
               <button className="h-[40px]">
-                <img 
-                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                <img
+                  src="/app-store-badge.svg"
                   alt="Download on the App Store"
-                  className="h-full w-[135px] object-contain"
+                  className="h-full object-contain"
                 />
               </button>
-            </div>
-            <div className="relative">
+              <div className="h-[40px] w-[1px]" />
               <button className="h-[40px]">
-                <img 
-                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                <img
+                  src="/google-play-badge.png"
                   alt="Get it on Google Play"
-                  className="h-full w-[155px] object-contain"
+                  className="h-full object-contain"
                 />
               </button>
             </div>
             <div className="relative">
-              <button 
+              <button
                 className="flex items-center space-x-1.5 hover:text-gray-300 transition-colors text-[15px]"
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
               >
@@ -75,7 +74,7 @@ export default function Header() {
             <div className="h-4 w-px bg-gray-700" />
             <div className="flex items-center">
               <button
-                onClick={() => {}}
+                onClick={() => { }}
                 className="flex items-center space-x-2 hover:text-gray-300 transition-colors text-[15px]"
               >
                 <User className="w-5 h-5" />
