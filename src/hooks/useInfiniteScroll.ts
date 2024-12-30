@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 
 export function useInfiniteScroll(callback: () => void, threshold = 0.8) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const targetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const options = {
-      threshold,
+      root: null, // Default is viewport
+      rootMargin: '300px', // Preload when the user is within 300px of the target
+      threshold, // Trigger callback when this proportion of the target is visible
     };
 
     observerRef.current = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting);
       if (entry.isIntersecting) {
         callback();
       }
@@ -39,5 +39,5 @@ export function useInfiniteScroll(callback: () => void, threshold = 0.8) {
     };
   }, [targetRef.current]);
 
-  return { targetRef, isIntersecting };
+  return { targetRef };
 }

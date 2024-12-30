@@ -640,7 +640,7 @@ export default function ArticlePage() {
                       elements.push(
                         <React.Fragment key={`list-${index}`}>
                           <ul className="list-disc pl-8 space-y-3">
-                            {block.items.map((item, itemIndex) => (
+                            {block.items?.map((item, itemIndex) => (
                               <li key={itemIndex} className="text-[20px] text-gray-900 leading-[1.7] tracking-tight font-[450]">
                                 {item}
                               </li>

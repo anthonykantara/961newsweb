@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Article } from '../types/article';
 
 export function useArticleLoader(currentArticle: Article) {
@@ -37,6 +37,13 @@ export function useArticleLoader(currentArticle: Article) {
     }
   }, [currentArticle, loadedArticles.length, isLoading, hasMore]);
 
+   // Preload next article
+   useEffect(() => {
+    if (hasMore && !isLoading) {
+      loadNextArticle();
+    }
+   }, [hasMore, isLoading, loadNextArticle]);
+  
   return {
     loadedArticles,
     isLoading,
