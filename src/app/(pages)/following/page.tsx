@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 export default function FollowingPage() {
   const router = useRouter();
   const [showAuthDialog, setShowAuthDialog] = useState(false);
-  const isLoggedIn = false; // Replace with actual auth state
+  const isLoggedIn = true; // Replace with actual auth state
 
   // Redirect if the user is not logged in
   useEffect(() => {
@@ -33,21 +33,23 @@ export default function FollowingPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 py-6">
-      <div className="container mx-auto px-4 max-w-[1200px]">
-        <div className="mb-6">
-          <AdPlacement />
-        </div>
+      <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-6">
+            <AdPlacement />
+          </div>
 
-        <div className="flex gap-8">
-          <FollowingSidebar />
-          <div className="flex-1">
-            <div className="mb-6">
-              <h1 className="text-2xl font-bold">Following</h1>
-            </div>
+          <div className="flex gap-8">
+            <FollowingSidebar />
+            <div className="flex-1">
+              <div className="mb-6">
+                <h1 className="text-2xl text-center font-bold">Following</h1>
+              </div>
 
-            <FeedList posts={posts} />
-            <div className="mt-16">
-              <AdPlacement />
+              <FeedList posts={posts} />
+              <div className="mt-16">
+                <AdPlacement />
+              </div>
             </div>
           </div>
         </div>
