@@ -95,7 +95,9 @@ export default function CountrySelect({ value, onChange }: CountrySelectProps) {
     <div className="relative" ref={dropdownRef}>
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen ? 'true' : 'false'}
+        onClick={() => setIsOpen((prev) => !prev)}
         className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FF0000] transition-shadow text-left flex items-center justify-between"
       >
         <span className={selectedCountry ? 'text-gray-900' : 'text-gray-400'}>
@@ -105,10 +107,16 @@ export default function CountrySelect({ value, onChange }: CountrySelectProps) {
       </button>
 
       {isOpen && (
-        <div className="fixed z-50 w-[calc(100vw-2rem)] md:w-[calc(100%-2rem)] max-w-[24rem] mt-1 bg-white rounded-lg shadow-lg border border-gray-200" style={{
-          top: dropdownRef.current ? dropdownRef.current.getBoundingClientRect().bottom + window.scrollY + 4 : 0,
-          left: dropdownRef.current ? dropdownRef.current.getBoundingClientRect().left : 0
-        }}>
+        <div
+          className="z-[50] w-[calc(100vw-2rem)] md:w-[calc(100%-2rem)] max-w-[24rem] bg-white rounded-lg shadow-lg border border-gray-200"
+          style={{
+            position: 'fixed',
+            bottom: 0, // Starts off-screen when closed
+            left: dropdownRef.current ? dropdownRef.current.getBoundingClientRect().left : 0,
+            maxHeight: '60vh',
+            overflowY: 'auto',
+          }}
+        >
           <div className="p-2 border-b border-gray-100">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -131,9 +139,8 @@ export default function CountrySelect({ value, onChange }: CountrySelectProps) {
                   setIsOpen(false);
                   setSearch('');
                 }}
-                className={`w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors ${
-                  country.code === value ? 'bg-red-50 text-[#FF0000]' : 'text-gray-700'
-                }`}
+                className={`w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors ${country.code === value ? 'bg-red-50 text-[#FF0000]' : 'text-gray-700'
+                  }`}
               >
                 {country.name}
               </button>

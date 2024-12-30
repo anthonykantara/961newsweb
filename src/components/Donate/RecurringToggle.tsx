@@ -21,9 +21,10 @@ export default function RecurringToggle({ isRecurring, onToggle }: RecurringTogg
         }`}
       >
         <motion.span
-          layout
           className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
+          initial={{ x: 4 }}
           animate={{ x: isRecurring ? 28 : 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         />
       </button>
     </div>
