@@ -9,11 +9,6 @@ interface LiveUpdateCardProps {
 }
 
 export default function LiveUpdateCard({ update }: LiveUpdateCardProps) {
-
-  const handleClick = () => {
-    window.open(`/updates/${update.id}`, '_blank');
-  };
-
   return (
     <div className="bg-white py-2.5 px-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">
       <div className="flex items-center gap-4">
@@ -29,14 +24,12 @@ export default function LiveUpdateCard({ update }: LiveUpdateCardProps) {
             {update.priority === 'high' && (
               <Zap className="w-4 h-4 text-[#FF0000] flex-shrink-0" />
             )}
-            <a
+            <Link
               href={`/updates/${update.id}`}
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-medium text-gray-900 hover:text-[#FF0000] transition-colors text-[15px] leading-snug"
             >
               {update.title}
-            </a>
+            </Link>
           </div>
         </div>
         <span className="text-gray-400 text-[13px] whitespace-nowrap">
