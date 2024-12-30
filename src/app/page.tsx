@@ -16,6 +16,7 @@ import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import RowNewsSection from '@/components/HomePage/RowNewsSection';
 import { politicsNewsStories, techNewsStories, worldHeadlines, worldNewsStories } from '@/components/HomePage/data';
+import UpperMenu from '@/components/UpperMenu';
 
 const heroSlides = [
   {
@@ -257,6 +258,7 @@ export default function HomePage() {
 
   return (
     <>
+      <UpperMenu />
       <Header />
       <Navigation />
       <LiveFeedPreview />
