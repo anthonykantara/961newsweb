@@ -8,7 +8,6 @@ import AdPlacement from '../components/Ads/AdPlacement';
 import { Sun, ChevronRight, ChevronLeft, Radio, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CategoryCards from '../components/HomePage/CategoryCards';
-import WorldNewsSection from '../components/HomePage/WorldNewsSection';
 import MostSharedSection from '../components/HomePage/MostSharedSection';
 import PopularJournalists from '../components/HomePage/PopularJournalists';
 import PopularOutlets from '../components/HomePage/PopularOutlets';
@@ -486,39 +485,41 @@ export default function HomePage() {
               >
                 {verticalVideos.map((video, index) => (
                   <React.Fragment key={video.id}>
-                    <div className="flex-none w-[300px] group cursor-pointer">
-                      <div className="relative aspect-[9/16] rounded-lg overflow-hidden mb-3">
-                        <img
-                          src={video.thumbnailUrl}
-                          alt={video.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <h3 className="text-white font-medium line-clamp-2 mb-2">
-                            {video.title}
-                          </h3>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              <img
-                                src={video.outlet.logo}
-                                alt={video.outlet.name}
-                                className="w-5 h-5 rounded-full object-cover mr-2"
-                              />
-                              <span className="text-white/90 text-sm">{video.outlet.name}</span>
-                            </div>
-                            <div className="px-2 py-1 bg-black/40 text-white text-xs rounded">
-                              {video.duration}
+                    <Link href={`/video/${video.id}`} passHref>
+                      <div className="flex-none w-[300px] group cursor-pointer">
+                        <div className="relative aspect-[9/16] rounded-lg overflow-hidden mb-3">
+                          <img
+                            src={video.thumbnailUrl}
+                            alt={video.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          <div className="absolute bottom-4 left-4 right-4">
+                            <h3 className="text-white font-medium line-clamp-2 mb-2">
+                              {video.title}
+                            </h3>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <img
+                                  src={video.outlet.logo}
+                                  alt={video.outlet.name}
+                                  className="w-5 h-5 rounded-full object-cover mr-2"
+                                />
+                                <span className="text-white/90 text-sm">{video.outlet.name}</span>
+                              </div>
+                              <div className="px-2 py-1 bg-black/40 text-white text-xs rounded">
+                                {video.duration}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                            <Play className="w-7 h-7 text-gray-900" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                              <Play className="w-7 h-7 text-gray-900" />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                     {index === 1 && (
                       <div className="flex-none w-[300px]">
                         <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
