@@ -34,7 +34,7 @@ const trendingNews = [
         timestamp: new Date(Date.now() - 86400000),
         outlet: {
             name: '961 News',
-            logo: '/961-dot.png'
+            logo: '/961-logo.png'
         }
     },
     {
@@ -45,7 +45,7 @@ const trendingNews = [
         timestamp: new Date(Date.now() - 172800000),
         outlet: {
             name: '961 News',
-            logo: '/961-dot.png'
+            logo: '/961-logo.png'
         }
     },
     {
@@ -56,7 +56,7 @@ const trendingNews = [
         timestamp: new Date(Date.now() - 259200000),
         outlet: {
             name: '961 News',
-            logo: '/961-dot.png'
+            logo: '/961-logo.png'
         }
     },
     {
@@ -67,7 +67,7 @@ const trendingNews = [
         timestamp: new Date(Date.now() - 345600000),
         outlet: {
             name: '961 News',
-            logo: '/961-dot.png'
+            logo: '/961-logo.png'
         }
     },
     {
@@ -78,7 +78,7 @@ const trendingNews = [
         timestamp: new Date(Date.now() - 432000000),
         outlet: {
             name: '961 News',
-            logo: '/961-dot.png'
+            logo: '/961-logo.png'
         }
     },
     {
@@ -89,7 +89,7 @@ const trendingNews = [
         timestamp: new Date(Date.now() - 518400000),
         outlet: {
             name: '961 News',
-            logo: '/961-dot.png'
+            logo: '/961-logo.png'
         }
     }
 ];
@@ -253,7 +253,7 @@ export default function UpdatePage({
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center">
                                                         <img
-                                                            src="/961-dot.png"
+                                                            src="/961-logo.png"
                                                             alt="961 News"
                                                             className="w-5 h-5 rounded-full object-cover mr-2"
                                                         />

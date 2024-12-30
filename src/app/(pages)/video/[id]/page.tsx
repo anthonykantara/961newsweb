@@ -20,7 +20,7 @@ const video = {
   timestamp: new Date(Date.now() - 3600000),
   outlet: {
     name: '961 News',
-    logo: '/961-dot.png',
+    logo: '/961-logo.png',
     isFollowing: false
   },
   author: {
@@ -42,7 +42,7 @@ const relatedVideos = [
     views: 32100,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   // ... more related videos

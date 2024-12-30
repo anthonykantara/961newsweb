@@ -275,7 +275,7 @@ const relatedVideos = [
     views: 45200,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -286,7 +286,7 @@ const relatedVideos = [
     views: 32100,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -297,7 +297,7 @@ const relatedVideos = [
     views: 28400,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -308,7 +308,7 @@ const relatedVideos = [
     views: 25600,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -319,7 +319,7 @@ const relatedVideos = [
     views: 22800,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -330,7 +330,7 @@ const relatedVideos = [
     views: 19500,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -341,7 +341,7 @@ const relatedVideos = [
     views: 17200,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -352,7 +352,7 @@ const relatedVideos = [
     views: 15800,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -363,7 +363,7 @@ const relatedVideos = [
     views: 14200,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
   {
@@ -374,7 +374,7 @@ const relatedVideos = [
     views: 12500,
     outlet: {
       name: '961 News',
-      logo: '/961-dot.png'
+      logo: '/961-logo.png'
     }
   },
 ];
