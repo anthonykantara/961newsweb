@@ -5,7 +5,7 @@ import Link from "next/link";
 import { formatTimeAgo } from '../utils/dateUtils';
 import LiveFeedPreview from '../components/LiveFeed/LiveFeedPreview';
 import AdPlacement from '../components/Ads/AdPlacement';
-import { Sun, ChevronRight, ChevronLeft, Radio, Play } from 'lucide-react';
+import { Sun, ChevronRight, ChevronLeft, MonitorPlay } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CategoryCards from '../components/HomePage/CategoryCards';
 import MostSharedSection from '../components/HomePage/MostSharedSection';
@@ -523,7 +523,7 @@ export default function HomePage() {
                           </div>
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                              <Play className="w-7 h-7 text-gray-900" />
+                              <MonitorPlay className="w-7 h-7 text-gray-900" />
                             </div>
                           </div>
                         </div>
