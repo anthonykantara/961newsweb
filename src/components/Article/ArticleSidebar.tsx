@@ -28,12 +28,12 @@ interface ArticleSidebarProps {
   isLoggedIn?: boolean;
 }
 
-export default function ArticleSidebar({ 
-  outlet, 
-  author, 
-  popularArticles, 
+export default function ArticleSidebar({
+  outlet,
+  author,
+  popularArticles,
   outletArticles,
-  isLoggedIn = true 
+  isLoggedIn = true
 }: ArticleSidebarProps) {
   return (
     <aside className="w-[340px]">
@@ -50,64 +50,68 @@ export default function ArticleSidebar({
           </div>
         </div>
         <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center gap-2 mb-6">
-          <TrendingUp className="w-5 h-5 text-[#FF0000]" />
-          <h2 className="text-[18px] font-bold text-gray-900">Trending</h2>
-        </div>
-        <div className="space-y-4">
-          {popularArticles.slice(0, 5).map((article, index) => (
-            <Link
-              key={article.id}
-              href={`/article/${article.id}`}
-              className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
-            >
-              <span className="text-lg font-bold text-gray-400 w-4">
-                {index + 1}
-              </span>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-[15px] leading-snug line-clamp-2 mb-1 text-gray-900 group-hover:text-[#FF0000] transition-colors">
-                  {article.title}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">
-                    {formatTimeAgo(article.timestamp)}
-                  </span>
-                  <span className="text-xs text-gray-400">•</span>
-                  <span className="text-xs text-gray-400">{article.outlet?.name}</span>
+          <div className="flex items-center gap-2 mb-6">
+            <TrendingUp className="w-5 h-5 text-[#FF0000]" />
+            <h2 className="text-[18px] font-bold text-gray-900">Trending</h2>
+          </div>
+          <div className="space-y-4">
+            {popularArticles.slice(0, 5).map((article, index) => (
+              <Link
+                key={article.id}
+                href={`/article/${article.id}`}
+                className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
+              >
+                <span className="text-lg font-bold text-gray-400 w-4">
+                  {index + 1}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-[15px] leading-snug line-clamp-2 mb-1 text-gray-900 group-hover:text-[#FF0000] transition-colors">
+                    {article.title}
+                  </h3>
+                  <div className="flex items-center">
+                    <span className="text-xs text-gray-400">
+                      {formatTimeAgo(article.timestamp)}&ensp;
+                    </span>
+                    {author && <span className="text-xs text-gray-400">•&ensp;{author?.name}</span>}
+                    {article.outlet && <span className="text-xs text-gray-400">•&ensp;{article.outlet?.name}</span>}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <TrendingUp className="w-5 h-5 text-[#FF0000]" />
-          <h2 className="text-[18px] font-bold text-gray-900">{outlet.name}</h2>
-        </div>
-        <div className="space-y-4">
-          {outletArticles.slice(0, 5).map((article, index) => (
-            <Link
-              key={article.id}
-              href={`/article/${article.id}`}
-              className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
-            >
-              <span className="text-lg font-bold text-gray-400 w-4">
-                {index + 1}
-              </span>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-[15px] leading-snug line-clamp-2 mb-1 text-gray-900 group-hover:text-[#FF0000] transition-colors">
-                  {article.title}
-                </h3>
-                <span className="text-xs text-gray-400">
-                  {formatTimeAgo(article.timestamp)}
+          <div className="flex items-center gap-2 mb-4">
+            <TrendingUp className="w-5 h-5 text-[#FF0000]" />
+            <h2 className="text-[18px] font-bold text-gray-900">{outlet.name}</h2>
+          </div>
+          <div className="space-y-4">
+            {outletArticles.slice(0, 5).map((article, index) => (
+              <Link
+                key={article.id}
+                href={`/article/${article.id}`}
+                className="group flex items-start gap-3 cursor-pointer pb-4 border-b border-gray-100 last:border-0 last:pb-0"
+              >
+                <span className="text-lg font-bold text-gray-400 w-4">
+                  {index + 1}
                 </span>
-              </div>
-            </Link>
-          ))}
-        </div> 
-      </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-[15px] leading-snug line-clamp-2 mb-1 text-gray-900 group-hover:text-[#FF0000] transition-colors">
+                    {article.title}
+                  </h3>
+                  <div className="flex items-center">
+                    <span className="text-xs text-gray-400">
+                      {formatTimeAgo(article.timestamp)}&ensp;
+                    </span>
+                    {author && <span className="text-xs text-gray-400">•&ensp;{author?.name}</span>}
+                    {article.outlet && <span className="text-xs text-gray-400">•&ensp;{article.outlet?.name}</span>}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </aside>
   );
