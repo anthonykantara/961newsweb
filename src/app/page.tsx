@@ -270,46 +270,55 @@ export default function HomePage() {
         <div className="grid grid-cols-[1fr,300px] gap-6">
           <div className="relative">
             <div className="relative aspect-[2/1] overflow-hidden rounded-xl">
-              <img
-                src={heroSlides[currentSlide].imageUrl}
-                alt={heroSlides[currentSlide].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-white/90 text-sm">
-                    {formatTimeAgo(heroSlides[currentSlide].timestamp)}
-                  </span>
-                  <span className="text-white/60">•</span>
-                  {heroSlides[currentSlide].type === 'video' && (
-                    <span className="px-2 py-1 bg-[#FF0000] text-white text-xs font-medium rounded-full">
-                      Video
-                    </span>
-                  )}
-                  {heroSlides[currentSlide].type === 'breaking' && (
-                    <span className="px-2 py-1 bg-[#FF0000] text-white text-xs font-medium rounded-full animate-pulse">
-                      Breaking
-                    </span>
-                  )}
-                  <span className="px-2 py-1 bg-white/20 text-white text-xs font-medium rounded-full backdrop-blur-sm">
-                    {heroSlides[currentSlide].category}
-                  </span>
-                </div>
-                <h1 className="text-3xl font-bold text-white mb-4">
-                  {heroSlides[currentSlide].title}
-                </h1>
-                <div className="flex items-center gap-2">
+              <Link
+                href={
+                  heroSlides[currentSlide].type === "video"
+                    ? `/video/${heroSlides[currentSlide].id}`
+                    : `/article/${heroSlides[currentSlide].id}`
+                }
+                passHref
+              >
                   <img
-                    src={heroSlides[currentSlide].outlet.logo}
-                    alt={heroSlides[currentSlide].outlet.name}
-                    className="w-5 h-5 rounded-full"
+                    src={heroSlides[currentSlide].imageUrl}
+                    alt={heroSlides[currentSlide].title}
+                    className="w-full h-full object-cover"
                   />
-                  <span className="text-white/90 text-sm">
-                    {heroSlides[currentSlide].outlet.name}
-                  </span>
-                </div>
-              </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-white/90 text-sm">
+                        {formatTimeAgo(heroSlides[currentSlide].timestamp)}
+                      </span>
+                      <span className="text-white/60">•</span>
+                      {heroSlides[currentSlide].type === 'video' && (
+                        <span className="px-2 py-1 bg-[#FF0000] text-white text-xs font-medium rounded-full">
+                          Video
+                        </span>
+                      )}
+                      {heroSlides[currentSlide].type === 'breaking' && (
+                        <span className="px-2 py-1 bg-[#FF0000] text-white text-xs font-medium rounded-full animate-pulse">
+                          Breaking
+                        </span>
+                      )}
+                      <span className="px-2 py-1 bg-white/20 text-white text-xs font-medium rounded-full backdrop-blur-sm">
+                        {heroSlides[currentSlide].category}
+                      </span>
+                    </div>
+                    <h1 className="text-3xl font-bold text-white mb-4">
+                      {heroSlides[currentSlide].title}
+                    </h1>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={heroSlides[currentSlide].outlet.logo}
+                        alt={heroSlides[currentSlide].outlet.name}
+                        className="w-5 h-5 rounded-full"
+                      />
+                      <span className="text-white/90 text-sm">
+                        {heroSlides[currentSlide].outlet.name}
+                      </span>
+                    </div>
+                  </div>
+              </Link>
             </div>
             <div className="absolute top-1/2 -translate-y-1/2 -left-4">
               <button
