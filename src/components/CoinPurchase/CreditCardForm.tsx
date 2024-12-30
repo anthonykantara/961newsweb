@@ -10,17 +10,6 @@ export default function CreditCardForm({ onSubmit, onBack }: CreditCardFormProps
   return (
     <form onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
       <div className="space-y-6 mt-2">
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={onBack}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <h3 className="text-lg font-medium">Payment Details</h3>
-        </div>
-
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Card Number
