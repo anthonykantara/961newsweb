@@ -10,8 +10,11 @@ import CoinPurchaseDialog from '../CoinPurchase/CoinPurchaseDialog';
 import CoinIcon from '../Icons/CoinIcon';
 import { useReactions } from './hooks/useReactions';
 import { initialEmojis, premiumEmojis } from './constants/emojis';
+import { Emoji } from '@/types/emoji';
 
 export default function ReactionSystem() {
+  const [emojis, setEmojis] = useState(initialEmojis.map((e) => ({ ...e, count: e.count || 0 })));
+  const [selectedEmojiId, setSelectedEmojiId] = useState<string | null>(null); // State to track the selected emoji
   const [showPicker, setShowPicker] = useState(false);
   const [showCoinPurchase, setShowCoinPurchase] = useState(false);
   const [showAuthDialog, setShowAuthDialog] = useState(false);
@@ -25,34 +28,51 @@ export default function ReactionSystem() {
     selectedPremiumEmoji,
     handleEmojiClick,
     handleQuantitySelect,
-    setSelectedPremiumEmoji
-  } = useReactions(initialEmojis, userCoins);
+    setSelectedPremiumEmoji,
+    incrementEmojiCount,
+    decrementEmojiCount
+  } = useReactions(emojis, setEmojis, userCoins);
 
   const handleCoinClick = () => {
     setShowCoinPurchase(true);
   };
 
   const handleEmojiSelection = (selectedEmoji: Emoji) => {
-    const result = handleEmojiClick(selectedEmoji, isLoggedIn);
-    
+    if (!selectedEmoji.isPremium) {
+      if (selectedEmojiId) {
+        // Decrement the previously selected emoji back to zero
+        decrementEmojiCount(selectedEmojiId);
+      }
+
+      if (selectedEmoji.id === selectedEmojiId) {
+        // Deselect if the same emoji is clicked again
+        setSelectedEmojiId(null);
+      } else {
+        // Select the new emoji
+        incrementEmojiCount(selectedEmoji.id);
+        setSelectedEmojiId(selectedEmoji.id);
+      }
+    } else {
+      const result = handleEmojiClick(selectedEmoji, isLoggedIn);
+
     if (result.insufficientCoins) {
       alert(`You need ${selectedEmoji.coinCost} coins to use this reaction!`);
       return;
     }
-    
+
     if (result.requiresQuantity) {
       setShowQuantitySelector(true);
       return;
     }
-    
+
     if (result.success) {
       setShowPicker(false);
-    }
+    }}
   };
 
   const handleQuantitySelection = (quantity: number) => {
     const result = handleQuantitySelect(quantity, isLoggedIn);
-    
+
     if (result.success) {
       setShowQuantitySelector(false);
       setShowPicker(false);
@@ -89,7 +109,7 @@ export default function ReactionSystem() {
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-visible relative z-50 max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex flex-wrap justify-center gap-8 mb-6">
-                {initialEmojis.map((emoji) => (
+                {emojis.map((emoji) => (
                   <motion.button
                     key={emoji.id}
                     whileHover={{ scale: 1.1 }}
@@ -107,12 +127,14 @@ export default function ReactionSystem() {
                 ))}
               </div>
               <div className="h-px bg-gray-100 mb-6" />
-              <TopEmojis emojis={sortedEmojis} onEmojiClick={handleEmojiSelection} />
+              <div className="flex justify-center">
+                <TopEmojis emojis={emojis} onEmojiClick={handleEmojiSelection} />
+              </div>
               <div className="h-px bg-gray-100 my-6" />
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center justify-between w-full">
                   <span className="font-medium text-gray-900">Premium Reactions</span>
-                  <button 
+                  <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleCoinClick();
@@ -136,7 +158,7 @@ export default function ReactionSystem() {
           </div>
         </div>
       )}
-      
+
       {showQuantitySelector && selectedPremiumEmoji && (
         <div className="fixed inset-0 flex items-center justify-center z-[60]">
           <div className="absolute inset-0 bg-black/50" onClick={() => setShowQuantitySelector(false)} />
@@ -154,30 +176,29 @@ export default function ReactionSystem() {
                 {selectedPremiumEmoji.coinCost} coins each
               </p>
             </div>
-            
+
             <div className="flex justify-center gap-4 mb-6">
               {[1, 5, 10, 50, 100].map((amount) => {
                 const totalCost = amount * (selectedPremiumEmoji.coinCost || 0);
                 const canAfford = totalCost <= userCoins;
-                
+
                 return (
                   <button
                     key={amount}
                     onClick={() => {
                       if (canAfford) handleQuantitySelection(amount);
                     }}
-                    className={`px-4 py-2 rounded-full ${
-                      canAfford
+                    className={`px-4 py-2 rounded-full ${canAfford
                         ? 'bg-gray-100 hover:bg-gray-200 text-gray-900'
                         : 'bg-gray-50 text-gray-400 cursor-not-allowed'
-                    }`}
+                      }`}
                   >
                     {amount}
                   </button>
                 );
               })}
             </div>
-            
+
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => setShowQuantitySelector(false)}

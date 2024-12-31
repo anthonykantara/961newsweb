@@ -6,7 +6,6 @@ import CoinPurchaseDialog from '../CoinPurchase/CoinPurchaseDialog';
 import CoinIcon from '../Icons/CoinIcon';
 import { useReactions } from '../Reactions/hooks/useReactions';
 import { initialEmojis, premiumEmojis } from '../Reactions/constants/emojis';
-import ShareDialog from './ShareDialog';
 import { Emoji } from '../../types/emoji';
 
 interface EngagementBarProps {
