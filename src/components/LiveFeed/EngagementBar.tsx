@@ -17,28 +17,57 @@ interface EngagementBarProps {
 }
 
 const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) => {
-  const [showShareDialog, setShowShareDialog] = useState(false);
+  const [emojis, setEmojis] = useState(() => [
+    ...initialEmojis.slice(0, 5).map((e) => ({ ...e, count: e.count || 0 })),
+    {
+      id: 'premium-trigger',
+      symbol: '✨',
+      name: 'premium',
+      count: 0,
+      isPremium: true,
+      coinCost: 5,
+    },
+  ]);
+  const [selectedEmojiId, setSelectedEmojiId] = useState<string | null>(null); // State to track the selected emoji
   const [showCoinPurchase, setShowCoinPurchase] = useState(false);
   const [showPremiumReactions, setShowPremiumReactions] = useState(false);
   const [userCoins] = useState(100);
   const [isLoggedIn] = useState(true);
 
   const {
-    emojis: sortedEmojis,
-    totalReactions,
     handleEmojiClick,
-  } = useReactions(initialEmojis, userCoins);
+    incrementEmojiCount,
+    decrementEmojiCount
+  } = useReactions(emojis, setEmojis, userCoins);
 
   const handleEmojiSelection = (selectedEmoji: Emoji) => {
-    const result = handleEmojiClick(selectedEmoji, isLoggedIn);
-    
-    if (result.insufficientCoins) {
-      alert(`You need ${selectedEmoji.coinCost} coins to use this reaction!`);
-      return;
-    }
-    
-    if (result.success) {
-      onLike();
+    if (!selectedEmoji.isPremium) {
+      if (selectedEmojiId) {
+        // Decrement the previously selected emoji back to zero
+        decrementEmojiCount(selectedEmojiId);
+      }
+
+      if (selectedEmoji.id === selectedEmojiId) {
+        // Deselect if the same emoji is clicked again
+        setSelectedEmojiId(null);
+      } else {
+        // Select the new emoji
+        incrementEmojiCount(selectedEmoji.id);
+        setSelectedEmojiId(selectedEmoji.id);
+        onLike();
+      }
+    } else {
+      // Handle premium emoji logic
+      const result = handleEmojiClick(selectedEmoji, isLoggedIn);
+
+      if (result.insufficientCoins) {
+        alert(`You need ${selectedEmoji.coinCost} coins to use this reaction!`);
+        return;
+      }
+
+      if (result.success) {
+        onLike();
+      }
     }
   };
 
@@ -46,14 +75,7 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
     <>
       <div className="flex flex-col gap-6 p-6">
         <div className="flex flex-wrap justify-center gap-8">
-          {[...initialEmojis.slice(0, 5), {
-            id: 'premium-trigger',
-            symbol: '✨',
-            name: 'premium',
-            count: 0,
-            isPremium: true,
-            coinCost: 5
-          }].map((emoji) => (
+          {emojis.map((emoji) => (
             <motion.button
               key={emoji.id}
               whileHover={{ scale: 1.1 }}
@@ -65,9 +87,9 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
                   handleEmojiSelection(emoji);
                 }
               }}
-              className={`flex flex-col items-center text-5xl p-3 hover:bg-gray-50 rounded-lg transition-colors ${
-                emoji.id === 'premium-trigger' ? 'bg-gradient-to-br from-amber-100 to-amber-50' : ''
-              }`}
+              className={`flex flex-col items-center text-5xl p-3 rounded-lg transition-colors ${emoji.id === selectedEmojiId ? 'bg-blue-100' : 'hover:bg-gray-50'
+                } ${emoji.id === 'premium-trigger' ? 'bg-gradient-to-br from-amber-100 to-amber-50' : ''
+                }`}
             >
               <div className="relative">
                 {emoji.symbol}
@@ -85,25 +107,25 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
             </motion.button>
           ))}
         </div>
-        
-        {(sortedEmojis.length > 0 || showPremiumReactions) && (
+
+        {(emojis.length > 0 || showPremiumReactions) && (
           <>
             <div className="h-px bg-gray-100" />
-            {sortedEmojis.length > 0 && (
-              <TopEmojis 
-                emojis={sortedEmojis} 
+            {emojis.length > 0 && (
+              <TopEmojis
+                emojis={emojis}
                 onEmojiClick={handleEmojiSelection}
               />
             )}
           </>
         )}
-        
+
         {showPremiumReactions && (
           <>
             <div className="flex flex-wrap gap-3">
               <div className="flex items-center justify-between w-full">
                 <span className="font-medium text-gray-900">Premium Reactions</span>
-                <button 
+                <button
                   onClick={() => setShowCoinPurchase(true)}
                   className="flex items-center gap-2 px-6 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors border border-gray-200"
                 >
