@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
-import UpperMenu from '@/components/UpperMenu';
+import TopMenu from '@/components/TopMenu';
 
 export default function CategoriesLayout({
   children,
@@ -9,7 +9,7 @@ export default function CategoriesLayout({
 }) {
   return (
     <>
-      <UpperMenu />
+      <TopMenu />
       <Header />
       <Navigation />
       <div className="container mx-auto px-4 py-6">
