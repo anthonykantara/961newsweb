@@ -96,7 +96,7 @@ export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateF
             )}
           </div>
         )}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-end mt-8">
           <button
             onClick={(e) => {
               e.stopPropagation();
