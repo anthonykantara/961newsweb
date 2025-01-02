@@ -6,6 +6,7 @@ import Link from 'next/link';
 import AppDropdown from './AppDropdown';
 import { LanguageDropdown } from './LanguageDropdown';
 import Logo from './Logo';
+import Image from 'next/image';
 
 export default function Header() {
   const [appDropdownOpen, setAppDropdownOpen] = useState(false);
@@ -22,7 +23,8 @@ export default function Header() {
                 onClick={() => setAppDropdownOpen(!appDropdownOpen)}
                 className="hover:text-gray-300 transition-colors"
               >
-                <LayoutGrid className="w-3 h-3" />
+                {/* <LayoutGrid className="w-6 h-6" /> */}
+                <Image className="w-6 h-6 filter-white-svg" height={6} width={6} src={'/apps.svg'} alt={'grid-menu'} />
               </button>
               <AppDropdown
                 isOpen={appDropdownOpen}
