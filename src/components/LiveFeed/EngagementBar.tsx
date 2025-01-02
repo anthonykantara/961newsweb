@@ -98,11 +98,14 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
                   </span>
                 )}
               </div>
-              {emoji.id === 'premium-trigger' && (
-                <div className="absolute -top-2 -right-2 bg-[#FF0000] rounded-full p-1">
-                  <CoinIcon className="w-4 h-4 text-white" />
-                </div>
-              )}
+              {
+                // NOT SURE WHAT THIS IS FOR
+                // emoji.id === 'premium-trigger' && (
+                // <div className="absolute -top-2 -right-2 bg-[#FF0000] rounded-full p-1">
+                //   <CoinIcon className="w-4 h-4 text-white" />
+                // </div>
+                // )
+              }
             </motion.button>
           ))}
         </div>
