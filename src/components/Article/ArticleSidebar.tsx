@@ -44,9 +44,9 @@ export default function ArticleSidebar({
             <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
               AD
             </div>
-            <Link href={`/outlet/${outlet.id}`} className="text-[18px] font-bold text-gray-900 hover:text-[#FF0000] transition-colors">
-              {outlet.name}
-            </Link>
+            <div className="text-gray-400">
+              Ad Space
+            </div>
           </div>
         </div>
         <div className="p-6 border-b border-gray-200">
