@@ -7,12 +7,22 @@ import AppDropdown from './AppDropdown';
 import { LanguageDropdown } from './LanguageDropdown';
 import Logo from './Logo';
 import Image from 'next/image';
+import { QRDropdown } from './QRDropdown';
 
 export default function Header() {
   const [appDropdownOpen, setAppDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState({ code: 'en', name: 'English' });
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+  
   return (
     <header className="bg-black text-white">
       <div className="container mx-auto px-4">
@@ -44,7 +54,7 @@ export default function Header() {
 
           <div className="flex items-center space-x-5">
             <div className="relative flex items-center space-x-[1px]">
-              <button className="h-[40px]">
+              <button className="h-[40px]" onClick={toggleDropdown}>
                 <img
                   src="/app-store-badge.svg"
                   alt="Download on the App Store"
@@ -52,6 +62,7 @@ export default function Header() {
                 />
               </button>
               <div className="h-[40px] w-[1px]" />
+              <QRDropdown isOpen={isDropdownOpen} onClose={closeDropdown} />
               <button className="h-[40px]">
                 <img
                   src="/google-play-badge.png"
