@@ -32,15 +32,17 @@ export default function Header() {
               />
             </div>
             <Logo />
-            <div className="h-3 w-px bg-gray-700/50 mx-1" />
+            <div className="h-3 w-px bg-gray-300/80 mx-1" />
             <Link href="/map" className="text-[15px] text-gray-300 hover:text-white transition-colors">News Map</Link>
-            <div className="h-3 w-px bg-gray-700/50 mx-1" />
+            <div className="h-3 w-px bg-gray-300/80 mx-1" />
+            <Link href="/life" className="text-[15px] text-gray-300 hover:text-white transition-colors">Life</Link>
+            <div className="h-3 w-px bg-gray-300/80 mx-1" />
             <Link href="/weather" className="text-[15px] text-gray-300 hover:text-white transition-colors">Weather</Link>
-            <div className="h-3 w-px bg-gray-700/50 mx-1" />
+            <div className="h-3 w-px bg-gray-300/80 mx-1" />
             <Link href="/sports" className="text-[15px] text-gray-300 hover:text-white transition-colors">Sports</Link>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-5">
             <div className="relative flex items-center space-x-[1px]">
               <button className="h-[40px]">
                 <img
