@@ -11,8 +11,8 @@ interface Category {
 
 const categories: Category[] = [
   { name: 'Home', path: '/' },
-  { name: 'Following', path: '/following' },
-  { name: 'For You', path: '/for-you' },
+  // { name: 'Following', path: '/following' },
+  // { name: 'For You', path: '/for-you' },
   { name: 'Lebanon', path: '/lebanon' },
   { name: 'Politics', path: '/politics' },
   { name: 'Business', path: '/business' },
