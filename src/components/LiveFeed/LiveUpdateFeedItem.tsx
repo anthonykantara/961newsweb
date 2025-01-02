@@ -57,10 +57,7 @@ export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateF
               {formatTimeAgo(update.timestamp)}
             </span>
           </div>
-          <div className="group flex items-center justify-between">
-            <ReactionSystem />
-            <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#FF0000] transition-colors" />
-          </div>
+          <ReactionSystem />
         </div>
         <button
           onClick={handleClick}
@@ -80,14 +77,14 @@ export default function LiveUpdateFeedItem({ update, sharers = [] }: LiveUpdateF
                 src={update.media.url}
                 alt=""
                 className={`w-full object-cover ${update.media.aspectRatio === 'vertical'
-                    ? 'h-full'
-                    : 'max-h-[40vh]'
+                  ? 'h-full'
+                  : 'max-h-[40vh]'
                   }`}
               />
             ) : (
               <div className={`relative ${update.media.aspectRatio === 'vertical'
-                  ? 'h-screen'
-                  : 'aspect-video max-h-[40vh]'
+                ? 'h-screen'
+                : 'aspect-video max-h-[40vh]'
                 }`}>
                 <iframe
                   src={update.media.url}
