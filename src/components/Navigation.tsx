@@ -31,9 +31,9 @@ export default function Navigation() {
 
   return (
     <nav className="bg-white border-b border-gray-200">
-      <div className="mx-auto px-4">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-3">
-          <div className="flex items-center space-x-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center space-x-5 overflow-x-auto no-scrollbar">
             {!isHome && (
               <Link 
                 href="/live"
