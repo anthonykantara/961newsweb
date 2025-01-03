@@ -20,6 +20,7 @@ import OutletArticles from '@/components/Article/OutletArticles';
 import TopArticles from '@/components/Article/TopArticles';
 import CommentInput from '@/components/Article/CommentInput';
 import CommentList from '@/components/Article/CommentList';
+import Link from 'next/link';
 
 const article = {
   id: '1',
@@ -129,7 +130,7 @@ const comments = [
   {
     id: '1',
     content: 'These economic reforms seem promising, but implementation will be key. The banking sector needs to fully commit to these changes for them to be effective.',
-    user: { 
+    user: {
       id: '1',
       name: 'John Smith',
       username: 'johnsmith',
@@ -523,9 +524,9 @@ export default function ArticlePage() {
     <div className="min-h-screen bg-gray-100 py-6">
       <div className="container mx-auto px-4">
         <AdPlacement />
-        
+
         <div className="grid grid-cols-[300px,850px,340px] max-w-[1550px] mx-auto justify-center divide-x divide-gray-200">
-          <LeftSidebar 
+          <LeftSidebar
             articles={popularArticles}
             outlet={article.outlet}
             author={article.author}
@@ -552,7 +553,7 @@ export default function ArticlePage() {
                   <div className="flex items-center gap-4 w-full">
                     <div className="flex items-center gap-2">
                       <ReactionSystem />
-                      <button 
+                      <button
                         onClick={() => commentsRef.current?.scrollIntoView({ behavior: 'smooth' })}
                         className="h-10 flex items-center gap-2 px-5 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
                       >
@@ -561,7 +562,7 @@ export default function ArticlePage() {
                       </button>
                     </div>
                     <div className="flex items-center gap-2 ml-auto">
-                      <button 
+                      <button
                         onClick={handleBookmarkClick}
                         className="h-10 flex items-center gap-2 px-5 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
                       >
@@ -618,9 +619,9 @@ export default function ArticlePage() {
                   {!article.featuredImage && <div className="h-px bg-gray-100 mb-8" />}
                   {article.content.reduce((acc: JSX.Element[], block, index, array) => {
                     const contentElements = acc.filter(el => el.type !== 'div');
-                    const shouldAddAd = contentElements.length % 4 === 0 && 
-                      contentElements.length > 0 && 
-                      index !== array.length - 1 && 
+                    const shouldAddAd = contentElements.length % 4 === 0 &&
+                      contentElements.length > 0 &&
+                      index !== array.length - 1 &&
                       block.type !== 'image';
 
                     const isFirstBlock = index === 0;
@@ -629,13 +630,13 @@ export default function ArticlePage() {
                     if (block.type === 'text') {
                       elements.push(
                         <React.Fragment key={`text-${index}`}>
-                        <p className="text-[20px] text-gray-900 leading-[1.7] tracking-tight font-[450]">
-                          {block.content}
-                        </p>
+                          <p className="text-[20px] text-gray-900 leading-[1.7] tracking-tight font-[450]">
+                            {block.content}
+                          </p>
                         </React.Fragment>
                       );
                     }
-                    
+
                     if (block.type === 'list') {
                       elements.push(
                         <React.Fragment key={`list-${index}`}>
@@ -649,7 +650,7 @@ export default function ArticlePage() {
                         </React.Fragment>
                       );
                     }
-                    
+
                     if (block.type === 'quote') {
                       elements.push(
                         <React.Fragment key={`quote-${index}`}>
@@ -662,7 +663,7 @@ export default function ArticlePage() {
                         </React.Fragment>
                       );
                     }
-                    
+
                     if (block.type === 'image') {
                       elements.push(
                         <React.Fragment key={`image-${index}`}>
@@ -679,7 +680,7 @@ export default function ArticlePage() {
                         </React.Fragment>
                       );
                     }
-                    
+
                     if (isFirstBlock || shouldAddAd) {
                       elements.push(
                         <div key={`ad-${index}`} className="my-12">
@@ -690,7 +691,7 @@ export default function ArticlePage() {
 
                     return [...acc, ...elements];
                   }, [])}
-                  
+
                   <div className="flex justify-center mt-12">
                     <button
                       onClick={() => setShowShareDialog(true)}
@@ -728,11 +729,11 @@ export default function ArticlePage() {
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-sm p-6 mt-4">
-                <EngagementBar 
+                <EngagementBar
                   likes={0}
                   shares={0}
-                  onLike={() => {}}
-                  onShare={() => {}}
+                  onLike={() => { }}
+                  onShare={() => { }}
                 />
               </div>
             </article>
@@ -770,11 +771,11 @@ export default function ArticlePage() {
             <OutletArticles />
 
             <AdPlacement />
-            
+
             <RelatedArticles />
 
             <AdPlacement />
-            
+
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="relative">
                 <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar scroll-smooth" id="videoScroll">
@@ -826,7 +827,7 @@ export default function ArticlePage() {
                     </React.Fragment>
                   ))}
                 </div>
-                <button 
+                <button
                   onClick={() => {
                     const container = document.getElementById('videoScroll');
                     if (container) {
@@ -839,7 +840,7 @@ export default function ArticlePage() {
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
                 </button>
-                <button 
+                <button
                   onClick={() => {
                     const container = document.getElementById('videoScroll');
                     if (container) {
@@ -862,18 +863,18 @@ export default function ArticlePage() {
             </article>
 
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <EngagementBar 
+              <EngagementBar
                 likes={0}
                 shares={0}
-                onLike={() => {}}
-                onShare={() => {}}
+                onLike={() => { }}
+                onShare={() => { }}
               />
             </div>
 
             <OutletArticles />
 
             <AdPlacement />
-            
+
             <RelatedArticles />
 
             <AdPlacement />
@@ -883,39 +884,41 @@ export default function ArticlePage() {
                 <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar scroll-smooth" id="videoScroll">
                   {relatedVideos.map((video, index) => (
                     <React.Fragment key={video.id}>
-                      <div className="flex-none w-[300px] group cursor-pointer">
-                        <div className="relative aspect-[9/16] rounded-lg overflow-hidden mb-3">
-                          <img
-                            src={video.thumbnailUrl}
-                            alt={video.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-medium line-clamp-2 mb-2">
-                              {video.title}
-                            </h3>
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center">
-                                <img
-                                  src={video.outlet.logo}
-                                  alt={video.outlet.name}
-                                  className="w-5 h-5 rounded-full object-cover mr-2"
-                                />
-                                <span className="text-white/90 text-sm">{video.outlet.name}</span>
-                              </div>
-                              <div className="px-2 py-1 bg-black/40 text-white text-xs rounded">
-                                {video.duration}
+                      <Link href={`/video/${video.id}`} passHref>
+                        <div className="flex-none w-[300px] group cursor-pointer">
+                          <div className="relative aspect-[9/16] rounded-lg overflow-hidden mb-3">
+                            <img
+                              src={video.thumbnailUrl}
+                              alt={video.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                            <div className="absolute bottom-4 left-4 right-4">
+                              <h3 className="text-white font-medium line-clamp-2 mb-2">
+                                {video.title}
+                              </h3>
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center">
+                                  <img
+                                    src={video.outlet.logo}
+                                    alt={video.outlet.name}
+                                    className="w-5 h-5 rounded-full object-cover mr-2"
+                                  />
+                                  <span className="text-white/90 text-sm">{video.outlet.name}</span>
+                                </div>
+                                <div className="px-2 py-1 bg-black/40 text-white text-xs rounded">
+                                  {video.duration}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                              <Play className="w-7 h-7 text-gray-900" />
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                              <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                                <Play className="w-7 h-7 text-gray-900" />
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                       {index === 1 && (
                         <div className="flex-none w-[300px]">
                           <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
@@ -929,7 +932,7 @@ export default function ArticlePage() {
                     </React.Fragment>
                   ))}
                 </div>
-                <button 
+                <button
                   onClick={() => {
                     const container = document.getElementById('videoScroll');
                     if (container) {
@@ -942,7 +945,7 @@ export default function ArticlePage() {
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
                 </button>
-                <button 
+                <button
                   onClick={() => {
                     const container = document.getElementById('videoScroll');
                     if (container) {
@@ -969,7 +972,7 @@ export default function ArticlePage() {
               onClose={() => setShowAuthDialog(false)}
             />
           </div>
-          
+
           <div>
             <ArticleSidebar
               outlet={article.outlet}
@@ -984,30 +987,30 @@ export default function ArticlePage() {
         {loadedArticles.slice(1).map((nextArticle, index) => {
           const isLast = index === loadedArticles.length - 2;
           return (
-          <div key={nextArticle.id} className="mt-12 pt-12 border-t border-gray-200">
-            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-[300px,850px,340px] max-w-[1550px] mx-auto justify-center divide-x divide-gray-200">
-                <LeftSidebar 
-                  articles={popularArticles}
-                  outlet={nextArticle.outlet}
-                  author={nextArticle.author}
-                />
-                <ArticleLoader
-                  article={nextArticle}
-                  isLast={isLast}
-                />
-                <div>
-                  <ArticleSidebar
+            <div key={nextArticle.id} className="mt-12 pt-12 border-t border-gray-200">
+              <div className="container mx-auto px-4">
+                <div className="grid grid-cols-[300px,850px,340px] max-w-[1550px] mx-auto justify-center divide-x divide-gray-200">
+                  <LeftSidebar
+                    articles={popularArticles}
                     outlet={nextArticle.outlet}
                     author={nextArticle.author}
-                    popularArticles={popularArticles}
-                    outletArticles={outletArticles}
-                    isLoggedIn={isLoggedIn}
                   />
+                  <ArticleLoader
+                    article={nextArticle}
+                    isLast={isLast}
+                  />
+                  <div>
+                    <ArticleSidebar
+                      outlet={nextArticle.outlet}
+                      author={nextArticle.author}
+                      popularArticles={popularArticles}
+                      outletArticles={outletArticles}
+                      isLoggedIn={isLoggedIn}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           );
         })}
         {isLoading && (
