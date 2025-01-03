@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Play, Clock, MessageCircle, Bookmark } from 'lucide-react';
 import { formatTimeAgo } from '@/utils/dateUtils';
 import AdPlacement from '@/components/Ads/AdPlacement';
@@ -9,6 +9,9 @@ import ShareDialog from '@/components/LiveFeed/ShareDialog';
 import AuthDialog from '@/components/Auth/AuthDialog';
 import Comments from '@/components/Comments/Comments';
 import ReactionSystem from '@/components/Reactions/ReactionSystem';
+import CommentInput from '@/components/Comments/CommentInput';
+import CommentList from '@/components/Comments/CommentList';
+import TopArticles from '@/components/Article/TopArticles';
 
 const video = {
   id: '1',
@@ -49,6 +52,64 @@ const relatedVideos = [
   // ... more related videos
 ];
 
+const comments = [
+  {
+    id: '1',
+    content: 'These economic reforms seem promising, but implementation will be key. The banking sector needs to fully commit to these changes for them to be effective.',
+    user: {
+      id: '1',
+      name: 'John Smith',
+      username: 'johnsmith',
+      avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=1740'
+    },
+    timestamp: new Date(Date.now() - 3600000),
+    likes: 24,
+    isLiked: false,
+    replies: [
+      {
+        id: '1.1',
+        content: 'I agree. The success of these reforms heavily depends on proper oversight and enforcement.',
+        user: {
+          id: '2',
+          name: 'Sarah Johnson',
+          username: 'sarahj',
+          avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1740'
+        },
+        timestamp: new Date(Date.now() - 3500000),
+        likes: 12,
+        isLiked: false
+      },
+      {
+        id: '1.2',
+        content: 'The timeline for implementation seems ambitious. Hope they can stick to it.',
+        user: {
+          id: '3',
+          name: 'Michael Brown',
+          username: 'mikebrown',
+          avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=1740'
+        },
+        timestamp: new Date(Date.now() - 3400000),
+        likes: 8,
+        isLiked: false
+      }
+    ]
+  },
+  {
+    id: '2',
+    content: 'The focus on digital transformation in the banking sector is particularly interesting. This could really modernize our financial infrastructure.',
+    user: {
+      id: '4',
+      name: 'Emily Davis',
+      username: 'emilyd',
+      avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=1740'
+    },
+    timestamp: new Date(Date.now() - 7200000),
+    likes: 18,
+    isLiked: false,
+    isPaid: true
+  },
+];
+
 export default function VideoPage({
   params,
 }: {
@@ -59,6 +120,8 @@ export default function VideoPage({
   const [showAuthDialog, setShowAuthDialog] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const isLoggedIn = false; // Replace with actual auth state
+  const [remainingFreeComments, setRemainingFreeComments] = useState(1);
+  const commentsRef = useRef<HTMLDivElement>(null);
 
   const handleBookmarkClick = () => {
     if (!isLoggedIn) {
@@ -66,6 +129,44 @@ export default function VideoPage({
       return;
     }
     setIsBookmarked(!isBookmarked);
+  };
+
+  const handleComment = (text: string) => {
+    if (!isLoggedIn) {
+      setShowAuthDialog(true);
+      return;
+    }
+
+    // Add new comment logic here
+    console.log('New comment:', text);
+  };
+
+  const handleLike = (commentId: string) => {
+    if (!isLoggedIn) {
+      setShowAuthDialog(true);
+      return;
+    }
+
+    // Like comment logic here
+    console.log('Like comment:', commentId);
+  };
+
+  const handleReply = (commentId: string) => {
+    if (!isLoggedIn) {
+      setShowAuthDialog(true);
+      return;
+    }
+
+    // Reply to comment logic here
+    console.log('Reply to comment:', commentId);
+  };
+
+  const handleCommentClick = () => {
+    if (!isLoggedIn) {
+      setShowAuthDialog(true);
+      return;
+    }
+    commentsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -229,16 +330,122 @@ export default function VideoPage({
                   />
                 </div>
 
-                <AdPlacement />
-
-                {/* Comments */}
-                <div className="bg-white rounded-lg shadow-sm p-6">
-                  <Comments comments={[]} />
-                </div>
-
-                <AdPlacement />
               </div>
             </article>
+
+            <AdPlacement />
+
+            {/* Comments */}
+            <div ref={commentsRef} id="comments-section" className="bg-white rounded-lg shadow-sm p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold">Comments ({comments.length})</h2>
+              </div>
+
+              <div className="mb-8">
+                <CommentInput
+                  onSubmit={handleComment}
+                  isFirstComment={remainingFreeComments > 0}
+                  remainingFreeComments={remainingFreeComments}
+                />
+              </div>
+
+              <CommentList
+                comments={comments}
+                onLike={handleLike}
+                onReply={handleReply}
+                onReport={(id) => console.log('Report', id)}
+                onBlock={(id) => console.log('Block', id)}
+              />
+            </div>
+
+            <AdPlacement />
+            <article className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <TopArticles />
+              </article>
+
+              <AdPlacement />
+
+              <div className="bg-white rounded-lg shadow-sm p-6">
+                <div className="relative">
+                  <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar scroll-smooth" id="videoScroll">
+                    {relatedVideos.map((video, index) => (
+                      <React.Fragment key={video.id}>
+                        <div className="flex-none w-[300px] group cursor-pointer">
+                          <div className="relative aspect-[9/16] rounded-lg overflow-hidden mb-3">
+                            <img
+                              src={video.thumbnailUrl}
+                              alt={video.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                            <div className="absolute bottom-4 left-4 right-4">
+                              <h3 className="text-white font-medium line-clamp-2 mb-2">
+                                {video.title}
+                              </h3>
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center">
+                                  <img
+                                    src={video.outlet.logo}
+                                    alt={video.outlet.name}
+                                    className="w-5 h-5 rounded-full object-cover mr-2"
+                                  />
+                                  <span className="text-white/90 text-sm">{video.outlet.name}</span>
+                                </div>
+                                <div className="px-2 py-1 bg-black/40 text-white text-xs rounded">
+                                  {video.duration}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                              <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                                <Play className="w-7 h-7 text-gray-900" fill="white" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {index === 1 && (
+                          <div className="flex-none w-[300px]">
+                            <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                              <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
+                                AD
+                              </div>
+                              <span className="text-gray-400">Ad Space</span>
+                            </div>
+                          </div>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => {
+                      const container = document.getElementById('videoScroll');
+                      if (container) {
+                        container.scrollBy({ left: -600, behavior: 'smooth' });
+                      }
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors z-10"
+                  >
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => {
+                      const container = document.getElementById('videoScroll');
+                      if (container) {
+                        container.scrollBy({ left: 600, behavior: 'smooth' });
+                      }
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors z-10"
+                  >
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <AdPlacement />
           </div>
 
           {/* Right Sidebar */}
