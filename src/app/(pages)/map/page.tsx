@@ -127,9 +127,9 @@ export default function NewsMapPage() {
   ), [])
 
   return (
-    <div className="h-[calc(100vh-4rem)] bg-gray-100">
+    <div className="h-[calc(100vh-4rem)]bg-white">
       <div className="h-full grid grid-cols-[1fr,340px]">
-        <div className="relative bg-gray-100 overflow-hidden">
+        <div className="relativebg-white overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
             <Map newsEvents={newsEvents} posix={[33.8938, 35.5018]} zoom={7} />
           </div>

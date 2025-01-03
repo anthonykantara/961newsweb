@@ -112,7 +112,7 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
 
         {(emojis.length > 0 || showPremiumReactions) && (
           <>
-            <div className="h-px bg-gray-100" />
+            <div className="h-pxbg-white" />
             <div className="flex justify-center">
               {emojis.length > 0 && (
                 <TopEmojis

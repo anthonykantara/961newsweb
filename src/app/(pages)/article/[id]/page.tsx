@@ -521,7 +521,7 @@ export default function ArticlePage() {
   const { targetRef } = useInfiniteScroll(loadNextArticle);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6">
+    <div className="min-h-screen py-6">
       <div className="container mx-auto px-4">
         <AdPlacement />
 
@@ -616,7 +616,7 @@ export default function ArticlePage() {
                 </div>
 
                 <div className="max-w-none space-y-12 mt-8">
-                  {!article.featuredImage && <div className="h-px bg-gray-100 mb-8" />}
+                  {!article.featuredImage && <div className="h-pxbg-white mb-8" />}
                   {article.content.reduce((acc: JSX.Element[], block, index, array) => {
                     const contentElements = acc.filter(el => el.type !== 'div');
                     const shouldAddAd = contentElements.length % 4 === 0 &&
@@ -816,7 +816,7 @@ export default function ArticlePage() {
                       </div>
                       {index === 1 && (
                         <div className="flex-none w-[300px]">
-                          <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                          <div className="relative aspect-[9/16] rounded-lg overflow-hiddenbg-white flex items-center justify-center">
                             <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
                               AD
                             </div>
@@ -921,7 +921,7 @@ export default function ArticlePage() {
                       </Link>
                       {index === 1 && (
                         <div className="flex-none w-[300px]">
-                          <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                          <div className="relative aspect-[9/16] rounded-lg overflow-hiddenbg-white flex items-center justify-center">
                             <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
                               AD
                             </div>

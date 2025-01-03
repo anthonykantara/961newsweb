@@ -125,7 +125,7 @@ export default function OutletsPage() {
     .sort((a, b) => b.followers - a.followers);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6">
+    <div className="min-h-screenbg-white py-6">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto mb-6">
           <AdPlacement />

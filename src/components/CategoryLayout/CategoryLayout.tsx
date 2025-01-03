@@ -10,7 +10,7 @@ interface CategoryLayoutProps {
 
 export default function CategoryLayout({ title, description }: CategoryLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-100 py-6">
+    <div className="min-h-screenbg-white py-6">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">

@@ -49,7 +49,7 @@ export default function ArticleCardEngagement({
               alt=""
               className="w-6 h-6 rounded-full border-2 border-white"
             />
-            <div className="h-6 min-w-[1.5rem] rounded-full bg-gray-100 border-2 border-white flex items-center justify-center px-1.5">
+            <div className="h-6 min-w-[1.5rem] rounded-fullbg-white border-2 border-white flex items-center justify-center px-1.5">
               <span className="text-xs font-medium leading-none">+12</span>
             </div>
           </div>

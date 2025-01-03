@@ -67,7 +67,7 @@ export default function JournalistStats({ journalist }: JournalistStatsProps) {
               <span className="text-gray-600">Videos Created</span>
               <span className="font-bold">24</span>
             </div>
-            <div className="h-px bg-gray-100" />
+            <div className="h-pxbg-white" />
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-gray-600">Most Active Section</span>
@@ -94,7 +94,7 @@ export default function JournalistStats({ journalist }: JournalistStatsProps) {
                   <div className="flex items-end gap-3">
                     <div className="flex flex-col items-center gap-1 w-4.5">
                       <div className="text-xs text-gray-500">15%</div>
-                      <div className="w-full bg-gray-100 rounded-t h-[48px]" />
+                      <div className="w-fullbg-white rounded-t h-[48px]" />
                       <div className="text-xs text-gray-500">10s</div>
                     </div>
                     <div className="flex flex-col items-center gap-1 w-4.5">
@@ -109,22 +109,22 @@ export default function JournalistStats({ journalist }: JournalistStatsProps) {
                     </div>
                     <div className="flex flex-col items-center gap-1 w-4.5">
                       <div className="text-xs text-gray-500">10%</div>
-                      <div className="w-full bg-gray-100 rounded-t h-[32px]" />
+                      <div className="w-fullbg-white rounded-t h-[32px]" />
                       <div className="text-xs text-gray-500">40s</div>
                     </div>
                     <div className="flex flex-col items-center gap-1 w-4.5">
                       <div className="text-xs text-gray-500">5%</div>
-                      <div className="w-full bg-gray-100 rounded-t h-[16px]" />
+                      <div className="w-fullbg-white rounded-t h-[16px]" />
                       <div className="text-xs text-gray-500">50s</div>
                     </div>
                     <div className="flex flex-col items-center gap-1 w-4.5">
                       <div className="text-xs text-gray-500">0%</div>
-                      <div className="w-full bg-gray-100 rounded-t h-0" />
+                      <div className="w-fullbg-white rounded-t h-0" />
                       <div className="text-xs text-gray-500">60s+</div>
                     </div>
                   </div>
                 </div>
-                <div className="w-px bg-gray-100" />
+                <div className="w-pxbg-white" />
                 <div className="flex-1 flex items-center justify-center ml-4 mr-8">
                   <div className="relative w-32 h-32">
                     <svg className="w-full h-full transform -rotate-90">

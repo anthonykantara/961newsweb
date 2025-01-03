@@ -126,11 +126,11 @@ export default function ReactionSystem() {
                   </motion.button>
                 ))}
               </div>
-              <div className="h-px bg-gray-100 mb-6" />
+              <div className="h-pxbg-white mb-6" />
               <div className="flex justify-center">
                 <TopEmojis emojis={emojis} onEmojiClick={handleEmojiSelection} />
               </div>
-              <div className="h-px bg-gray-100 my-6" />
+              <div className="h-pxbg-white my-6" />
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center justify-between w-full">
                   <span className="font-medium text-gray-900">Premium Reactions</span>

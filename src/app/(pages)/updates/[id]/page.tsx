@@ -124,7 +124,7 @@ export default function UpdatePage({
     }
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screenbg-white">
             <div className="max-w-[800px] mx-auto px-4 py-6">
                 <AdPlacement />
 
@@ -273,7 +273,7 @@ export default function UpdatePage({
                                     </div>
                                     {index === 1 && (
                                         <div className="flex-none w-[300px]">
-                                            <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                                            <div className="relative aspect-[9/16] rounded-lg overflow-hiddenbg-white flex items-center justify-center">
                                                 <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
                                                     AD
                                                 </div>

@@ -170,7 +170,7 @@ export default function VideoPage({
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6">
+    <div className="min-h-screenbg-white py-6">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-[300px,850px,340px] max-w-[1550px] mx-auto justify-center divide-x divide-gray-200">
           {/* Left Sidebar */}
@@ -405,7 +405,7 @@ export default function VideoPage({
                         </div>
                         {index === 1 && (
                           <div className="flex-none w-[300px]">
-                            <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                            <div className="relative aspect-[9/16] rounded-lg overflow-hiddenbg-white flex items-center justify-center">
                               <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
                                 AD
                               </div>

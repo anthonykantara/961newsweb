@@ -106,7 +106,7 @@ export default function RowNewsSection({ title, articles, headlines, viewAllLink
                                 </h3>
                             </Link>
                             {index < headlines.length - 1 && (
-                                <div className="h-px bg-gray-100 mt-0.5" />
+                                <div className="h-pxbg-white mt-0.5" />
                             )}
                         </div>
                     ))}

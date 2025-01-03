@@ -49,7 +49,7 @@ export default function PopularOutlets() {
     <div className="bg-white rounded-lg shadow-sm p-6">
       <div className="flex items-center gap-6 mb-6">
         <h2 className="text-[18px] font-bold">Outlets</h2>
-        <div className="flex bg-gray-100 rounded-lg p-1">
+        <div className="flexbg-white rounded-lg p-1">
           <button
             onClick={() => setSortBy('views')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${

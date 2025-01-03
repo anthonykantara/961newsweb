@@ -68,7 +68,7 @@ export default function DonateDialog({ isOpen, onClose }: DonateDialogProps) {
                       onAmountSelect={setAmount}
                     />
 
-                    <div className="h-px bg-gray-100" />
+                    <div className="h-pxbg-white" />
 
                     <RecurringToggle
                       isRecurring={isRecurring}

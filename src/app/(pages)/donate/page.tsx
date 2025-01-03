@@ -24,7 +24,7 @@ export default function DonatePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
+    <div className="min-h-screenbg-white py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto">
           {step === 1 ? (
@@ -37,7 +37,7 @@ export default function DonatePage() {
                   onAmountSelect={setAmount}
                 />
 
-                <div className="h-px bg-gray-100" />
+                <div className="h-pxbg-white" />
 
                 <RecurringToggle
                   isRecurring={isRecurring}

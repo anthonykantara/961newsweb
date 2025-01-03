@@ -54,7 +54,7 @@ export default function JournalistProfile({ journalist }: JournalistProfileProps
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowShareDialog(true)}
-                className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2.5bg-white text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
               >
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 2L11 13" />
