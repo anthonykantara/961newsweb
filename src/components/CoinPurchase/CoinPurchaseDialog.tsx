@@ -55,7 +55,9 @@ export default function CoinPurchaseDialog({ isOpen, onClose }: CoinPurchaseDial
             {!showQRCode && (
               <button
                 onClick={() => {
-                  if (selectedPackage) {
+                  if (paymentMethod === 'card') {
+                    setPaymentMethod('');
+                  } else if (selectedPackage) {
                     setSelectedPackage(null);
                     setPaymentMethod('');
                   } else {
