@@ -531,7 +531,7 @@ export default function HomePage() {
                     </Link>
                     {index === 1 && (
                       <div className="flex-none w-[300px]">
-                        <div className="relative aspect-[9/16] rounded-lg overflow-hiddenbg-white flex items-center justify-center">
+                        <div className="relative aspect-[9/16] rounded-lg overflow-hidden bg-white flex items-center justify-center">
                           <div className="absolute top-2 right-2 bg-white/80 px-2 py-0.5 rounded text-xs text-gray-500">
                             AD
                           </div>

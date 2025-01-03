@@ -616,7 +616,7 @@ export default function ArticlePage() {
                 </div>
 
                 <div className="max-w-none space-y-12 mt-8">
-                  {!article.featuredImage && <div className="h-pxbg-white mb-8" />}
+                  {!article.featuredImage && <div className="h-px bg-white mb-8" />}
                   {article.content.reduce((acc: JSX.Element[], block, index, array) => {
                     const contentElements = acc.filter(el => el.type !== 'div');
                     const shouldAddAd = contentElements.length % 4 === 0 &&
