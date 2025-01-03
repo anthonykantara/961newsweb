@@ -9,8 +9,8 @@ export default function MapLayout({
 }) {
   return (
     <>
-      {/* <TopMenu />
-      <Header /> */}
+      <TopMenu />
+      <Header />
       <Navigation /> 
       <div className="mx-auto">
         {children}

@@ -114,7 +114,11 @@ const Map = ({ newsEvents, posix, zoom = 7, language }: MapProps) => {
                     return (
                         <MarkerLayer>
                             <Marker
+                                key={event.id}
                                 position={[event.location.lat, event.location.lng]}
+                                size={[50,30]}
+                                interactive
+                                riseOnHover
                             >
                                 <EventMarker
                                     type={isValidEventType(event.type) ? event.type : 'default'}
@@ -122,6 +126,12 @@ const Map = ({ newsEvents, posix, zoom = 7, language }: MapProps) => {
                                     source={event.location.source}
                                     size={40}
                                 />
+                                {/* <Popup>
+                                    <div className="p-2">
+                                        <h3 className="font-medium text-gray-900">{event.title[language]}</h3>
+                                        <p className="text-sm text-gray-500">{event.location.name[language]}</p>
+                                    </div>
+                                </Popup> */}
                             </Marker>
                         </MarkerLayer>
                     );

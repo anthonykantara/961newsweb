@@ -131,7 +131,7 @@ export default function NewsMapPage() {
   };
 
   return (
-    <div className={`h-full grid grid-cols-[1fr,340px] ${language === "ar" ? "rtl" : ""}`}>
+    <div className={`h-screen grid grid-cols-[1fr,340px] ${language === "ar" ? "rtl" : ""}`}>
       <div className="relative bg-white overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
           <Map newsEvents={newsEvents} posix={[33.8938, 35.5018]} zoom={7} language={language} />
@@ -149,9 +149,9 @@ export default function NewsMapPage() {
       </div>
 
       <div className="bg-white border-l border-gray-200 overflow-y-auto">
-        <div className="p-1">
+        <div className="relative p-1">
           {/* Language Toggle */}
-          <div className="fixed top-0 bg-white z-10 py-2 border-b border-gray-200">
+          <div className="bg-white z-10 py-2 border-b border-gray-200">
             <button
               onClick={toggleLanguage}
               className="bg-gray-100 px-4 py-2 rounded-lg shadow-md text-sm font-medium"
