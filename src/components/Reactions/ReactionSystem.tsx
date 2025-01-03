@@ -13,10 +13,21 @@ import { initialEmojis, premiumEmojis } from './constants/emojis';
 import { Emoji } from '@/types/emoji';
 
 export default function ReactionSystem() {
-  const [emojis, setEmojis] = useState(initialEmojis.map((e) => ({ ...e, count: e.count || 0 })));
+  const [emojis, setEmojis] = useState(() => [
+    ...initialEmojis.slice(0, 5).map((e) => ({ ...e, count: e.count || 0 })),
+    {
+      id: 'premium-trigger',
+      symbol: '✨',
+      name: 'premium',
+      count: 0,
+      isPremium: true,
+      coinCost: 5,
+    },
+  ]);
   const [selectedEmojiId, setSelectedEmojiId] = useState<string | null>(null); // State to track the selected emoji
   const [showPicker, setShowPicker] = useState(false);
   const [showCoinPurchase, setShowCoinPurchase] = useState(false);
+  const [showPremiumReactions, setShowPremiumReactions] = useState(false);
   const [showAuthDialog, setShowAuthDialog] = useState(false);
   const [showQuantitySelector, setShowQuantitySelector] = useState(false);
   const [userCoins] = useState(100);
@@ -55,19 +66,20 @@ export default function ReactionSystem() {
     } else {
       const result = handleEmojiClick(selectedEmoji, isLoggedIn);
 
-    if (result.insufficientCoins) {
-      alert(`You need ${selectedEmoji.coinCost} coins to use this reaction!`);
-      return;
-    }
+      if (result.insufficientCoins) {
+        alert(`You need ${selectedEmoji.coinCost} coins to use this reaction!`);
+        return;
+      }
 
-    if (result.requiresQuantity) {
-      setShowQuantitySelector(true);
-      return;
-    }
+      if (result.requiresQuantity) {
+        setShowQuantitySelector(true);
+        return;
+      }
 
-    if (result.success) {
-      setShowPicker(false);
-    }}
+      if (result.success) {
+        setShowPicker(false);
+      }
+    }
   };
 
   const handleQuantitySelection = (quantity: number) => {
@@ -75,7 +87,7 @@ export default function ReactionSystem() {
 
     if (result.success) {
       setShowQuantitySelector(false);
-      setShowPicker(false);
+      // setShowPicker(false);
     }
   };
 
@@ -103,6 +115,7 @@ export default function ReactionSystem() {
           </>
         )}
       </button>
+
       {showPicker && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="absolute inset-0 bg-black/20" onClick={() => setShowPicker(false)} />
@@ -114,46 +127,77 @@ export default function ReactionSystem() {
                     key={emoji.id}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => handleEmojiSelection(emoji)}
-                    className="flex flex-col items-center text-5xl p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                    onClick={() => {
+                      if (emoji.id === 'premium-trigger') {
+                        setShowPremiumReactions(!showPremiumReactions);
+                      } else {
+                        handleEmojiSelection(emoji);
+                      }
+                    }}
+                    className={`flex flex-col items-center text-5xl p-3 rounded-lg transition-colors ${emoji.id === selectedEmojiId ? 'bg-blue-100' : 'hover:bg-gray-50'
+                      } ${emoji.id === 'premium-trigger' ? 'bg-gradient-to-br from-amber-100 to-amber-50' : ''
+                      } relative`}
                   >
                     <div className="relative">
                       {emoji.symbol}
-                      <span className="text-base font-medium text-gray-600 mt-1 block">
-                        {emoji.count}
-                      </span>
+                      {emoji.id !== 'premium-trigger' && (
+                        <span className="text-base font-medium text-gray-600 mt-1 block">
+                          {emoji.count}
+                        </span>
+                      )}
                     </div>
+                    {emoji.id === 'premium-trigger' && (
+                      <div className="absolute -top-2 -right-2 bg-[#FF0000] rounded-full p-1">
+                        <CoinIcon className="w-4 h-4 text-white" />
+                      </div>
+                    )}
                   </motion.button>
                 ))}
               </div>
-              <div className="h-pxbg-white mb-6" />
-              <div className="flex justify-center">
-                <TopEmojis emojis={emojis} onEmojiClick={handleEmojiSelection} />
-              </div>
+
+              {(emojis.length > 0 || showPremiumReactions) && (
+                <>
+                  <div className="h-pxbg-white" />
+                  <div className="flex justify-center">
+                    {emojis.length > 0 && (
+                      <TopEmojis
+                        emojis={emojis}
+                        onEmojiClick={handleEmojiSelection}
+                      />
+                    )}
+                  </div>
+                </>
+              )}
+
               <div className="h-pxbg-white my-6" />
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center justify-between w-full">
-                  <span className="font-medium text-gray-900">Premium Reactions</span>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleCoinClick();
-                    }}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors border border-gray-200"
-                  >
-                    <CoinIcon className="w-5 h-5 text-yellow-500" />
-                    <span className="font-medium text-lg">{userCoins}</span>
-                  </button>
-                </div>
-                <EmojiPicker
-                  categories={{
-                    free: initialEmojis,
-                    premium: premiumEmojis
-                  }}
-                  onEmojiClick={handleEmojiSelection}
-                  userCoins={userCoins}
-                />
-              </div>
+
+              {showPremiumReactions && (
+                <>
+                  <div className="flex flex-wrap gap-3">
+                    <div className="flex items-center justify-between w-full">
+                      <span className="font-medium text-gray-900">Premium Reactions</span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleCoinClick();
+                        }}
+                        className="flex items-center gap-2 px-6 py-2.5 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors border border-gray-200"
+                      >
+                        <CoinIcon className="w-5 h-5 text-yellow-500" />
+                        <span className="font-medium text-lg">{userCoins}</span>
+                      </button>
+                    </div>
+                    <EmojiPicker
+                      categories={{
+                        free: initialEmojis,
+                        premium: premiumEmojis
+                      }}
+                      onEmojiClick={handleEmojiSelection}
+                      userCoins={userCoins}
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -189,8 +233,8 @@ export default function ReactionSystem() {
                       if (canAfford) handleQuantitySelection(amount);
                     }}
                     className={`px-4 py-2 rounded-full ${canAfford
-                        ? 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                        : 'bg-gray-50 text-gray-400 cursor-not-allowed'
+                      ? 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                      : 'bg-gray-50 text-gray-400 cursor-not-allowed'
                       }`}
                   >
                     {amount}

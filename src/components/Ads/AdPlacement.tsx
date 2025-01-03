@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export default function AdPlacement() {
   return (
     <div className="bg-white p-6 text-center mb-6">

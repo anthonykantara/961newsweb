@@ -73,7 +73,7 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
   return (
     <>
       <div className="flex flex-col gap-6 p-6">
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-6">
           {emojis.map((emoji) => (
             <motion.button
               key={emoji.id}
@@ -88,7 +88,7 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
               }}
               className={`flex flex-col items-center text-5xl p-3 rounded-lg transition-colors ${emoji.id === selectedEmojiId ? 'bg-blue-100' : 'hover:bg-gray-50'
                 } ${emoji.id === 'premium-trigger' ? 'bg-gradient-to-br from-amber-100 to-amber-50' : ''
-                }`}
+                } relative`}
             >
               <div className="relative">
                 {emoji.symbol}
@@ -98,14 +98,11 @@ const EngagementBar = ({ likes, shares, onLike, onShare }: EngagementBarProps) =
                   </span>
                 )}
               </div>
-              {
-                // NOT SURE WHAT THIS IS FOR
-                // emoji.id === 'premium-trigger' && (
-                // <div className="absolute -top-2 -right-2 bg-[#FF0000] rounded-full p-1">
-                //   <CoinIcon className="w-4 h-4 text-white" />
-                // </div>
-                // )
-              }
+              {emoji.id === 'premium-trigger' && (
+                <div className="absolute -top-2 -right-2 bg-[#FF0000] rounded-full p-1">
+                  <CoinIcon className="w-4 h-4 text-white" />
+                </div>
+              )}
             </motion.button>
           ))}
         </div>

@@ -52,7 +52,7 @@ export function useReactions(
         return { requiresAuth: true };
       }
 
-      if (!selectedPremiumEmoji) return { error: true };
+      if (!selectedPremiumEmoji) return { error: "No premium emoji selected" };
 
       const totalCost = quantity * (selectedPremiumEmoji.coinCost || 0);
       if (totalCost > userCoins) return { insufficientCoins: true };
@@ -65,9 +65,12 @@ export function useReactions(
         )
       );
 
+      // Reset selectedPremiumEmoji if desired
+      setSelectedPremiumEmoji(null);
+      
       return { success: true };
     },
-    [selectedPremiumEmoji, userCoins]
+    [selectedPremiumEmoji, userCoins, setEmojis]
   );
 
   const sortedEmojis = [...emojis].sort((a, b) => b.count - a.count);
